@@ -1,0 +1,73 @@
+.hero-section {
+    margin: 0;
+    height: 500px; 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center; 
+    padding-left: 20px; 
+}
+  
+.hero-content h1 {
+    font-size: 2rem;
+    color: #fff; 
+}
+  
+.hero-content p {
+    font-size: 1.5rem;
+    color: #fff;
+}
+  
+.contact-us-button {
+    padding: 10px 20px;
+    background-color: #F5F5F5;
+    border: none;
+    border-radius: 20px; 
+    color: black;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.contact-us-button:hover {
+    background-color: #d4d3d3;
+    color: #F5F5F5;
+}
+
+.services-section {
+  background-color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.service-cards {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.card {
+  width: 30%; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+  padding: 20px;
+  text-align: center; 
+  background: #f9f9f9; 
+  border-radius: 10px; 
+  margin: 0 10px;
+}
+
+.card img {
+  width: 80px; 
+  height: auto;
+}
+
+.card button {
+  padding: 10px 20px;
+  background-color: #EADBC8;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+.card button:hover {
+  background-color: #DAC0A3;
+}
