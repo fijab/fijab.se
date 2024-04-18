@@ -6,7 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
   
 .banner-title {
     color: white;
@@ -17,5 +17,42 @@
 .contact-form h2 {
     text-align: center;
 }
+
+.address-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+  
+.address-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+  
+.contact-info {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+  
+.contact-column {
+    flex: 1;
+    padding: 0 20px;
+}
+  
+.map-container {
+    width: 100%;
+    overflow: hidden;
+}
+  
+.map-container iframe {
+    width: 100%;
+    height: 450px;
+    border: none;
+}
+  
 
   
