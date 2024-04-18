@@ -1,0 +1,22 @@
+.services-container {
+    margin: 20px;
+  }
+  
+  mat-card {
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  mat-card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  
+  mat-grid-tile {
+    display: flex;
+    justify-content: center;
+  }
+  
+  mat-card-actions {
+    justify-content: flex-end;
+  }
+
+  
