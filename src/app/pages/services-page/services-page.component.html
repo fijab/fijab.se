@@ -18,5 +18,26 @@
   </mat-grid-list>
 </div>
 
+<div class="process-section">
+  <h2 class="mat-h2">Beställningsprocess</h2>
+  <mat-horizontal-stepper>
+    <mat-step label="Välj Tjänst">
+      <p>Välj den tjänst du är intresserad av från vårt utbud.</p>
+      <button mat-button matStepperNext>Gå till nästa</button>
+    </mat-step>
+    <mat-step label="Fyll i dina uppgifter">
+      <p>Fyll i dina kontaktuppgifter så att vi kan nå dig för en konsultation.</p>
+      <button mat-button matStepperNext>Gå till nästa</button>
+      <button mat-button matStepperPrevious>Gå tillbaka</button>
+    </mat-step>
+    <mat-step label="Bekräftelse">
+      <p>Granska din information och bekräfta din förfrågan.</p>
+      <button mat-button matStepperPrevious>Gå tillbaka</button>
+      <button mat-button>Bekräfta</button>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
+
+
   
   

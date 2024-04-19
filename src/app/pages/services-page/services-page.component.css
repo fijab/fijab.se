@@ -3,10 +3,12 @@
 }
   
 mat-card {
+  width: 90%;
+  font-family: mont;
   transition: box-shadow 0.3s ease-in-out;
   justify-content: center;
   align-items: center;
-
+  z-index: -1;
 }
   
 mat-card:hover {
@@ -27,6 +29,24 @@ mat-card img[mat-card-image] {
   height: auto; 
   object-fit: cover; 
 }
+
+mat-horizontal-stepper {
+  width: 100%; 
+}
+
+mat-step-header {
+  background-color: transparent; 
+  color: #333; 
+}
+
+.services-container {
+  padding: 20px;
+}
+
+.mat-h2 {
+  text-align: center;
+}
+
 
 @media only screen and (max-width: 600px) {
   .mat-grid-list {
