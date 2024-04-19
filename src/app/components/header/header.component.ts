@@ -8,5 +8,10 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [RouterModule]
 })
-export class HeaderComponent { }
+export class HeaderComponent {
+  isMenuVisible = false;
 
+  toggleMenu(): void {
+    this.isMenuVisible = !this.isMenuVisible;
+  }
+}

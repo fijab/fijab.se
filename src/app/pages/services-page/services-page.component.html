@@ -1,21 +1,22 @@
 <div class="services-container">
-    <mat-grid-list cols="3" rowHeight="350px" gutterSize="10px">
-      <mat-grid-tile *ngFor="let service of services">
-        <mat-card>
-          <mat-card-header>
-            <mat-card-title>{{ service.title }}</mat-card-title>
-            <mat-card-subtitle>{{ service.subtitle }}</mat-card-subtitle>
-          </mat-card-header>
-          <img mat-card-image [src]="service.image" alt="{{ service.title }}">
-          <mat-card-content>
-            <p>{{ service.description }}</p>
-          </mat-card-content>
-          <mat-card-actions align="end">
-            <button mat-button>Learn More</button>
-          </mat-card-actions>
-        </mat-card>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </div>
+  <mat-grid-list [cols]="cols" rowHeight="350px" gutterSize="10px">
+    <mat-grid-tile *ngFor="let service of services">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ service.title }}</mat-card-title>
+          <mat-card-subtitle>{{ service.subtitle }}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="service.image" alt="{{ service.title }}">
+        <mat-card-content>
+          <p>{{ service.description }}</p>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-button>Läs mer</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
   
   

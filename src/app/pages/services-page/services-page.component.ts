@@ -1,38 +1,48 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-services-page',
-  standalone: true,
-  imports: [CommonModule, MatCardModule, MatGridListModule, MatButtonModule],
   templateUrl: './services-page.component.html',
-  styleUrl: './services-page.component.css'
+  styleUrls: ['./services-page.component.css'],
+  standalone: true,
+  imports: [CommonModule, MatCardModule, MatGridListModule, MatButtonModule]
 })
-export class ServicesPageComponent {
+export class ServicesPageComponent implements OnInit {
+  cols: number = 3;
   services = [
     {
-      title: 'Frontend Development',
+      title: 'Frontendutveckling',
       subtitle: 'Interactive Interfaces',
       description: 'We specialize in creating stunning visual experiences.',
-      image: 'assets/images/frontend.jpg'
+      image: 'assets/icons/business-development.gif'
     },
-
     {
-      title: 'Backend Development',
+      title: 'Backendutveckling',
       subtitle: 'Interactive Interfaces',
       description: 'We specialize in creating stunning visual experiences.',
-      image: 'assets/images/frontend.jpg'
+      image: 'assets/icons/management.gif'
     },
-
     {
-      title: 'UX/UI design',
+      title: 'UX/UI Design',
       subtitle: 'Interactive Interfaces',
       description: 'We specialize in creating stunning visual experiences.',
-      image: 'assets/images/frontend.jpg'
+      image: 'assets/icons/web-structure.gif'
     },
   ];
 
+  constructor(private breakpointObserver: BreakpointObserver) {}
+
+  ngOnInit(): void {
+    this.breakpointObserver.observe([
+      Breakpoints.Handset
+    ]).subscribe(result => {
+      this.cols = result.matches ? 1 : 3; 
+    });
+  }
 }
+
