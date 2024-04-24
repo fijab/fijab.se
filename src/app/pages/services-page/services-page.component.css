@@ -1,10 +1,10 @@
 .services-container {
-  margin: 20px;
+  margin: 10px;
 }
   
 mat-card {
-  width: 90%;
-  font-family: mont;
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
   transition: box-shadow 0.3s ease-in-out;
   justify-content: center;
   align-items: center;
@@ -52,5 +52,14 @@ mat-step-header {
   .mat-grid-list {
       grid-template-columns: repeat(1, 1fr) !important; /* Forces one column on mobile */
   }
+  mat-horizontal-stepper {
+    display: none; /* Hide horizontal stepper */
+  }
+
+  mat-vertical-stepper {
+    display: block; /* Show vertical stepper instead */
+  }
+
+
 }
   

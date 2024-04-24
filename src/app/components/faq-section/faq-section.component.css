@@ -21,19 +21,19 @@
   /* Question button styles */
 .faq-question {
     width: 100%;
-    background-color: #f8f8f8;
+    background-color: #ffffff;
     border: none;
     text-align: left;
     padding: 15px; 
     font-size: 16px;
     cursor: pointer;
-    border-bottom: 2px solid #ddd; 
+    border-bottom: 1px solid #ddd; 
     outline: none; /* Remove outline to clean up UI */
 }
   
 .faq-question:hover {
-    background-color: #EAE8E3; 
-    color: #77B0AA;
+    background-color: #f8f5f5; 
+    color: rgb(147, 147, 147);
 
 }
   
