@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -13,5 +13,11 @@ export class HeaderComponent {
 
   toggleMenu(): void {
     this.isMenuVisible = !this.isMenuVisible;
+  }
+
+  @Output() languageChange = new EventEmitter<string>();
+
+  switchLanguage(language: string): void {
+    this.languageChange.emit(language);
   }
 }

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="sv" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="home" datatype="html">
+        <source>Hem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/header/header.component.html</context>
+          <context context-type="linenumber">9,10</context>
+        </context-group>
+        <note priority="1" from="description">Link to home page</note>
+        <note priority="1" from="meaning">nav link</note>
+      </trans-unit>
+      <trans-unit id="services" datatype="html">
+        <source>Tjänster</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/header/header.component.html</context>
+          <context context-type="linenumber">10,11</context>
+        </context-group>
+        <note priority="1" from="description">Link to services page</note>
+        <note priority="1" from="meaning">nav link</note>
+      </trans-unit>
+      <trans-unit id="blog" datatype="html">
+        <source>Blogg</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/header/header.component.html</context>
+          <context context-type="linenumber">11,12</context>
+        </context-group>
+        <note priority="1" from="description">Link to blog page</note>
+        <note priority="1" from="meaning">nav link</note>
+      </trans-unit>
+      <trans-unit id="aboutUs" datatype="html">
+        <source>Om oss</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/header/header.component.html</context>
+          <context context-type="linenumber">12,13</context>
+        </context-group>
+        <note priority="1" from="description">Link to about us page</note>
+        <note priority="1" from="meaning">nav link</note>
+      </trans-unit>
+      <trans-unit id="contact" datatype="html">
+        <source>Kontakt</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/header/header.component.html</context>
+          <context context-type="linenumber">13,14</context>
+        </context-group>
+        <note priority="1" from="description">Link to contact page</note>
+        <note priority="1" from="meaning">nav link</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

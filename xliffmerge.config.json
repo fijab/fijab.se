@@ -1,0 +1,7 @@
+{
+    "xliffmergeOptions": {
+      "srcDir": "src",
+      "genDir": "src/locale",
+      "languages": ["en", "sv"]
+    }
+}
