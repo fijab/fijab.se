@@ -1,24 +1,29 @@
 <div class="header-container">
   <div class="header-logo">
-      <img src="assets/images/logo/logo.png" alt="FIJAB Logo">
-      <span>FIJAB</span>
+    <img src="assets/images/logo/logo.png" alt="FIJAB Logo">
+    <span>FIJAB</span>
   </div>
   <button class="hamburger" aria-label="Toggle navigation" (click)="toggleMenu()">&#9776;</button>
   <div class="header-right">
-      <ul class="header-nav" [class.mobile-visible]="isMenuVisible">
-        <li><a routerLink="/" routerLinkActive="active" i18n="nav link|Link to home page@@home">Hem</a></li>
-        <li><a routerLink="/services" i18n="nav link|Link to services page@@services">Tjänster</a></li>
-        <li><a routerLink="/blog" i18n="nav link|Link to blog page@@blog">Blogg</a></li>
-        <li><a routerLink="/about-us" i18n="nav link|Link to about us page@@aboutUs">Om oss</a></li>
-        <li><a routerLink="/contact" i18n="nav link|Link to contact page@@contact">Kontakt</a></li>
-        <li class="mobile-language-switcher">
-          <span class="language" (click)="switchLanguage('sv')">SV</span> | <span class="language" (click)="switchLanguage('en')">EN</span>
+    <ul class="header-nav" [class.mobile-visible]="isMenuVisible">
+      <li><a routerLink="/" routerLinkActive="active">{{ 'home' | translate }}</a></li>
+      <li><a routerLink="/services">{{ 'services' | translate }}</a></li>
+      <li><a routerLink="/blog">{{ 'blog' | translate }}</a></li>
+      <li><a routerLink="/about-us">{{ 'aboutUs' | translate }}</a></li>
+      <li><a routerLink="/contact">{{ 'contact' | translate }}</a></li>
+      <!-- Language Switcher -->
+      <ng-container *ngIf="isMenuVisible">
+        <li *ngFor="let locale of localesList" class="mobile-language-switcher">
+          <span class="language" (click)="switchLanguage(locale.code)">{{ locale.label }}</span>
         </li>
-      </ul>
-      <div class="language-switcher">
+      </ng-container>
+      <li class="language-switcher">
         <span class="language" (click)="switchLanguage('sv')">sv</span> | <span class="language" (click)="switchLanguage('en')">en</span>
-      </div>
+      </li>
+    </ul>
   </div>
 </div>
+
+
 
 
