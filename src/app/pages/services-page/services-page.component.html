@@ -1,43 +1,52 @@
-<div class="services-container">
-  <mat-grid-list [cols]="cols" rowHeight="350px" gutterSize="10px">
-    <mat-grid-tile *ngFor="let service of services">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>{{ service.title }}</mat-card-title>
-          <mat-card-subtitle>{{ service.subtitle }}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image [src]="service.image" alt="{{ service.title }}">
-        <mat-card-content>
-          <p>{{ service.description }}</p>
-        </mat-card-content>
-        <mat-card-actions align="end">
-          <button mat-button>Läs mer</button>
-        </mat-card-actions>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+<div class="grid grid-cols-3 gap-2.5">
+  <div *ngFor="let service of services" class="rounded overflow-hidden shadow-lg">
+    <img [src]="service.image" alt="{{ service.title }}" class="w-4">
+    <div class="px-6 py-4">
+      <div class="font-bold text-xl mb-2">{{ service.title }}</div>
+      <p class="text-gray-700 text-base">{{ service.subtitle }}</p>
+      <p class="text-gray-600 text-base">{{ service.description }}</p>
+    </div>
+    <div class="px-6 pt-4 pb-2 text-right">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Läs mer
+      </button>
+    </div>
+  </div>
 </div>
 
-<div class="process-section">
-  <h2 class="mat-h2">Beställningsprocess</h2>
-  <mat-horizontal-stepper>
-    <mat-step label="Välj Tjänst">
+<div class="max-w-4xl mx-auto p-6">
+  <h2 class="text-2xl font-bold mb-4">Beställningsprocess</h2>
+  <div class="border border-gray-200 rounded-lg">
+    <div class="p-4 border-b">
+      <h3 class="font-bold">Välj Tjänst</h3>
       <p>Välj den tjänst du är intresserad av från vårt utbud.</p>
-      <button mat-button matStepperNext>Gå till nästa</button>
-    </mat-step>
-    <mat-step label="Fyll i dina uppgifter">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
+        Gå till nästa
+      </button>
+    </div>
+    <div class="p-4 border-b">
+      <h3 class="font-bold">Fyll i dina uppgifter</h3>
       <p>Fyll i dina kontaktuppgifter så att vi kan nå dig för en konsultation.</p>
-      <button mat-button matStepperNext>Gå till nästa</button>
-      <button mat-button matStepperPrevious>Gå tillbaka</button>
-    </mat-step>
-    <mat-step label="Bekräftelse">
+      <div class="flex justify-between">
+        <button class="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded">
+          Gå tillbaka
+        </button>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Gå till nästa
+        </button>
+      </div>
+    </div>
+    <div class="p-4">
+      <h3 class="font-bold">Bekräftelse</h3>
       <p>Granska din information och bekräfta din förfrågan.</p>
-      <button mat-button matStepperPrevious>Gå tillbaka</button>
-      <button mat-button>Bekräfta</button>
-    </mat-step>
-  </mat-horizontal-stepper>
+      <div class="flex justify-between">
+        <button class="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded">
+          Gå tillbaka
+        </button>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Bekräfta
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-  
-  
