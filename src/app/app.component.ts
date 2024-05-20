@@ -20,24 +20,6 @@ registerLocaleData(localeEn);
 })
 export class AppComponent {
   title = 'fijab-web';
-
-  constructor(
-    private translate: TranslateService  
-  ) {
-    this.initDefaultLanguage();
-  }
-
-  initDefaultLanguage(): void {
-    const storedLang = localStorage.getItem('locale') || this.translate.getBrowserLang();
-    const browserLang = storedLang ? storedLang : 'sv';
-    this.translate.setDefaultLang('sv');
-    this.translate.use(browserLang.match(/en|sv/) ? browserLang : 'sv');
-  }
-
-  switchLanguage(language: string): void {
-    localStorage.setItem('locale', language);
-    document.documentElement.lang = language;
-    this.translate.use(language);  
-  }
+  
 }
 

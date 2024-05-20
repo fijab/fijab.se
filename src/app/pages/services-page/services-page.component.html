@@ -1,52 +1,48 @@
-<div class="grid grid-cols-3 gap-2.5">
-  <div *ngFor="let service of services" class="rounded overflow-hidden shadow-lg">
-    <img [src]="service.image" alt="{{ service.title }}" class="w-4">
-    <div class="px-6 py-4">
-      <div class="font-bold text-xl mb-2">{{ service.title }}</div>
-      <p class="text-gray-700 text-base">{{ service.subtitle }}</p>
-      <p class="text-gray-600 text-base">{{ service.description }}</p>
+<div class="container mx-auto px-4 py-8" x-data="{ step: 1 }">
+  <h2 class="text-center text-3xl font-bold font-josefin text-gray-700 mb-4">Processen</h2>
+  <p class="text-center text-gray-600 font-raleway mb-8">När du beställer våra tjänster går det till så här</p>
+  
+  <div class="relative pt-8 pb-8 w-full max-w-3xl mx-auto">
+    <div class="absolute inset-0 flex items-center" style="margin-top: 2rem;">
+      <div class="w-full border-t-4 border-gray-300"></div>
     </div>
-    <div class="px-6 pt-4 pb-2 text-right">
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        Läs mer
-      </button>
+    <div class="relative flex justify-between w-full">
+      <!-- Step 1 -->
+      <a (click)="setStep(1)" class="flex flex-col items-center group">
+        <div [ngClass]="{ 'bg-gray-700 text-white': step === 1, 'bg-gray-300 text-gray-700': step !== 1 }" class="flex items-center justify-center w-12 h-12 rounded-full transition-colors duration-300 group-hover:bg-gray-900 group-hover:text-white">
+          1
+        </div>
+        <span class="mt-2 text-sm font-medium text-gray-600 group-hover:text-gray-900">Steg 1</span>
+      </a>
+      <!-- Step 2 -->
+      <a (click)="setStep(2)" class="flex flex-col items-center group">
+        <div [ngClass]="{ 'bg-gray-700 text-white': step === 2, 'bg-gray-300 text-gray-700': step !== 2 }" class="flex items-center justify-center w-12 h-12 rounded-full transition-colors duration-300 group-hover:bg-gray-900 group-hover:text-white">
+          2
+        </div>
+        <span class="mt-2 text-sm font-medium text-gray-600 group-hover:text-gray-900">Steg 2</span>
+      </a>
+      <!-- Step 3 -->
+      <a (click)="setStep(3)" class="flex flex-col items-center group">
+        <div [ngClass]="{ 'bg-gray-700 text-white': step === 3, 'bg-gray-300 text-gray-700': step !== 3 }" class="flex items-center justify-center w-12 h-12 rounded-full transition-colors duration-300 group-hover:bg-gray-900 group-hover:text-white">
+          3
+        </div>
+        <span class="mt-2 text-sm font-medium text-gray-600 group-hover:text-gray-900">Steg 3</span>
+      </a>
     </div>
   </div>
-</div>
 
-<div class="max-w-4xl mx-auto p-6">
-  <h2 class="text-2xl font-bold mb-4">Beställningsprocess</h2>
-  <div class="border border-gray-200 rounded-lg">
-    <div class="p-4 border-b">
-      <h3 class="font-bold">Välj Tjänst</h3>
-      <p>Välj den tjänst du är intresserad av från vårt utbud.</p>
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
-        Gå till nästa
-      </button>
+  <div class="mt-8 max-w-3xl mx-auto">
+    <div *ngIf="step === 1" class="text-center p-4 bg-white shadow-md rounded-lg">
+      <h3 class="text-lg font-semibold text-gray-700">Steg 1: Första Kontakten</h3>
+      <p class="mt-2 text-gray-600">När du beställer våra tjänster tar vi kontakt med dig för att förstå dina behov.</p>
     </div>
-    <div class="p-4 border-b">
-      <h3 class="font-bold">Fyll i dina uppgifter</h3>
-      <p>Fyll i dina kontaktuppgifter så att vi kan nå dig för en konsultation.</p>
-      <div class="flex justify-between">
-        <button class="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded">
-          Gå tillbaka
-        </button>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          Gå till nästa
-        </button>
-      </div>
+    <div *ngIf="step === 2" class="text-center p-4 bg-white shadow-md rounded-lg">
+      <h3 class="text-lg font-semibold text-gray-700">Steg 2: Planering</h3>
+      <p class="mt-2 text-gray-600">Vi planerar tillsammans hur vi bäst kan hjälpa dig och fastställer tidsramar och budget.</p>
     </div>
-    <div class="p-4">
-      <h3 class="font-bold">Bekräftelse</h3>
-      <p>Granska din information och bekräfta din förfrågan.</p>
-      <div class="flex justify-between">
-        <button class="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded">
-          Gå tillbaka
-        </button>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          Bekräfta
-        </button>
-      </div>
+    <div *ngIf="step === 3" class="text-center p-4 bg-white shadow-md rounded-lg">
+      <h3 class="text-lg font-semibold text-gray-700">Steg 3: Genomförande</h3>
+      <p class="mt-2 text-gray-600">Vi utför arbetet enligt planen och håller dig informerad under hela processen.</p>
     </div>
   </div>
 </div>

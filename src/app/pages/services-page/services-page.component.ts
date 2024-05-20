@@ -1,40 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-services-page',
-  templateUrl: './services-page.component.html',
-  styleUrls: ['./services-page.component.css'],
+  selector: 'app-our-services',
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule],
+  templateUrl: './services-page.component.html',
+  styleUrl: './services-page.component.css'
 })
-export class ServicesPageComponent implements OnInit {
-  cols: number = 3;
-  services = [
-    {
-      title: 'Frontendutveckling',
-      subtitle: 'Interactive Interfaces',
-      description: 'We specialize in creating stunning visual experiences.',
-      image: 'assets/icons/business-development.gif'
-    },
-    {
-      title: 'Backendutveckling',
-      subtitle: 'Interactive Interfaces',
-      description: 'We specialize in creating stunning visual experiences.',
-      image: 'assets/icons/management.gif'
-    },
-    {
-        title: 'UX/UI Design',
-        subtitle: 'Interactive Interfaces',
-        description: 'We specialize in creating stunning visual experiences.',
-        image: 'assets/icons/web-structure.gif'
-    }
-  ];
+export class ServicesPageComponent {
+  step: number = 1;
 
-  // ngOnInit method implementation
-  ngOnInit(): void {
-    // Initialization logic here
+  setStep(step: number) {
+    this.step = step;
   }
+
 }
 
 

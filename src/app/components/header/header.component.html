@@ -1,29 +1,91 @@
-<div class="header-container">
-  <div class="header-logo">
-    <img src="assets/images/logo/logo.png" alt="FIJAB Logo">
-    <span>FIJAB</span>
-  </div>
-  <button class="hamburger" aria-label="Toggle navigation" (click)="toggleMenu()">&#9776;</button>
-  <div class="header-right">
-    <ul class="header-nav" [class.mobile-visible]="isMenuVisible">
-      <li><a routerLink="/" routerLinkActive="active">{{ 'home' | translate }}</a></li>
-      <li><a routerLink="/services">{{ 'services' | translate }}</a></li>
-      <li><a routerLink="/blog">{{ 'blog' | translate }}</a></li>
-      <li><a routerLink="/about-us">{{ 'aboutUs' | translate }}</a></li>
-      <li><a routerLink="/contact">{{ 'contact' | translate }}</a></li>
-      <!-- Language Switcher -->
-      <ng-container *ngIf="isMenuVisible">
-        <li *ngFor="let locale of localesList" class="mobile-language-switcher">
-          <span class="language" (click)="switchLanguage(locale.code)">{{ locale.label }}</span>
-        </li>
-      </ng-container>
-      <li class="language-switcher">
-        <span class="language" (click)="switchLanguage('sv')">sv</span> | <span class="language" (click)="switchLanguage('en')">en</span>
-      </li>
-    </ul>
-  </div>
-</div>
-
-
-
-
+<header class="flex items-center justify-between px-6 py-4 md:px-6 lg:px-8">
+  <a class="flex items-center" routerLink="/">
+    <img src="/assets/images/logo/logo.png" alt="FIJAB logo" class="h-8 w-8">
+    <span class="ml-2 text-lg font-light font-poppins">FIJAB</span>
+  </a>
+  <button
+    class="block md:hidden"
+    (click)="toggleMenu()"
+    aria-label="Toggle Menu"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="h-6 w-6"
+    >
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </button>
+  <nav class="hidden md:flex items-center space-x-7 font-raleway font-medium">
+    <a routerLink="/" class="text-gray-600 dark:text-gray-400 hover:text-stone-400 dark:hover:text-gray-50 underline-offset-8">
+      Hem
+    </a>
+    <a routerLink="/services" class="text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
+      Tjänster
+    </a>
+    <a routerLink="/blog" class="text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
+      Blogg
+    </a>
+    <a routerLink="/about-page" class="text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
+      Om oss
+    </a>
+    <a routerLink="/contact" class="text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
+      Kontakt
+    </a>
+    <button
+      class="hidden md:inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 hover:bg-accent hover:text-accent-foreground h-10 w-10"
+      type="button"
+      aria-label="Language"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="h-6 w-6"
+      >
+        <circle cx="12" cy="12" r="10"></circle>
+        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+        <path d="M2 12h20"></path>
+      </svg>
+    </button>
+  </nav>
+  <nav [ngClass]="{'block': isMenuOpen, 'hidden': !isMenuOpen}" class="absolute top-0 left-0 right-0 bg-white md:hidden font-raleway mt-4 space-y-4 p-4">
+    <a routerLink="/" class="block text-gray-600 dark:text-gray-400 hover:text-stone-400 dark:hover:text-gray-50 underline-offset-8">
+      Hem
+    </a>
+    <a routerLink="/our-services" class="block text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
+      Tjänster
+    </a>
+    <a routerLink="/blog" class="block text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
+      Blogg
+    </a>
+    <a routerLink="/about" class="block text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
+      Om oss
+    </a>
+    <a routerLink="/contact-us" class="block text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
+      Kontakt
+    </a>
+    <button
+      class="block text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8"
+      type="button"
+      aria-label="Switch Language"
+    >
+      Switch to English / Switch to Swedish
+    </button>
+  </nav>
+</header>
