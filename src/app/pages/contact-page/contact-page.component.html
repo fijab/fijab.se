@@ -1,26 +1,40 @@
 <!-- Contact Banner -->
-<div class="relative bg-cover bg-center h-80" style="background-image: url('assets/images/greeny.jpg');">
-    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+<div class="relative bg-cover bg-center h-80" style="background-image: url('assets/images/desk2.jpg');">
+    <div class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
       <h1 class="text-white text-4xl font-josefin font-bold">Kontakta oss</h1>
     </div>
-  </div>
-  
-  <!-- Contact Information and Form -->
-  <div class="container mx-auto px-4 py-8 md:flex md:space-x-8">
-    <!-- Contact Details -->
-    <div class="md:w-1/2 bg-white p-6 shadow-md rounded-lg mb-8 md:mb-0">
-      <h2 class="text-2xl font-bold mb-4">Kontakta oss</h2>
-      <p class="mb-2"><strong>Email:</strong> info&#64;fijab.com</p>
-      <p class="mb-2"><strong>Telefon:</strong> 0123-456789</p>
-      <p class="mb-2"><strong>Adress:</strong> Olle-jänsvägen 6, Fåker</p>
+</div>
+
+<div class="container mx-auto px-4 py-16">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-josefin font-bold mb-4">Här finns vi</h2>
     </div>
-    <!-- Contact Form -->
-    <div class="md:w-1/2 bg-white p-6 shadow-md rounded-lg">
-      <h2 class="text-2xl font-bold mb-4">Tveka inte att kontakta oss!</h2>
-      <!--here goes contact form component-->
+    <div class="flex justify-center space-x-8">
+      <div class="flex-1 text-center p-6 rounded-lg">
+        <img src="assets/icons/phone.png" alt="Email Icon" class="inline-block h-7 mb-2">
+        <h3 class="text-xl font-josefin font-bold text-dark-green mb-2">Telefon</h3>
+        <p class="font-poppins text-gray-600">0123-456789</p>
+      </div>
+      <div class="border-l border-gray-400 h-40 mx-4"></div>
+      <div class="flex-1 text-center p-6 rounded-lg">
+        <img src="assets/icons/address.png" alt="Email Icon" class="inline-block h-7 mb-2">
+        <h3 class="text-xl font-josefin font-bold text-dark-green mb-2">Adress</h3>
+        <p class="font-poppins text-gray-600">Olle-jänsvägen 6, Fåker</p>
+      </div>
+      <div class="border-l border-gray-400 h-40 mx-4"></div>
+      <div class="flex-1 text-center p-6 rounded-lg">
+        <img src="assets/icons/email.png" alt="Email Icon" class="inline-block h-7 mb-2">
+        <h3 class="text-xl font-josefin font-bold text-dark-green mb-2">E-post</h3>
+        <p class="font-poppins text-gray-600">info&#64;fijab.com</p>
+      </div>
     </div>
   </div>
-  
+
+<!-- Contact Information and Form -->
+<div class="container mx-auto px-4 py-8 space-y-8">
+      <app-contact-form></app-contact-form>
+</div>
+
   <!-- Google Map -->
   <div class="container mx-auto px-4 py-8">
     <div class="relative" style="padding-top: 56.25%;">

@@ -9,6 +9,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./contact-form.component.css']
 })
 export class ContactFormComponent {
+  name: string = '';
+  email: string = '';
+  mobile: string = '';
+  message: string = '';
+
+  onSubmit() {
+    console.log('Name:', this.name);
+    console.log('Email:', this.email);
+    console.log('Mobile:', this.mobile);
+    console.log('Message:', this.message);
+  }
   
   
 }
