@@ -4,7 +4,7 @@
     <span class="ml-2 text-lg font-light font-poppins">FIJAB</span>
   </a>
   <button
-    class="block md:hidden"
+    class="menu-button block md:hidden"
     (click)="toggleMenu()"
     aria-label="Toggle Menu"
   >
@@ -45,7 +45,9 @@
       class="hidden md:inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 hover:bg-accent hover:text-accent-foreground h-10 w-10"
       type="button"
       aria-label="Language"
+      (click)="toggleLanguage()"
     >
+      {{ isEnglish ? 'EN' : 'SV' }}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -64,28 +66,29 @@
       </svg>
     </button>
   </nav>
-  <nav [ngClass]="{'block': isMenuOpen, 'hidden': !isMenuOpen}" class="absolute top-0 left-0 right-0 bg-white md:hidden font-raleway mt-4 space-y-4 p-4">
-    <a routerLink="/" class="block text-gray-600 dark:text-gray-400 hover:text-stone-400 dark:hover:text-gray-50 underline-offset-8">
+  <nav [ngClass]="{'block': isMenuOpen, 'hidden': !isMenuOpen}" class="mobile-menu absolute top-0 left-0 right-0 bg-white md:hidden font-raleway mt-4 space-y-4 p-4">
+    <a routerLink="/" (click)="closeMenu()" class="block text-gray-600 dark:text-gray-400 hover:text-stone-400 dark:hover:text-gray-50 underline-offset-8">
       Hem
     </a>
-    <a routerLink="/our-services" class="block text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
+    <a routerLink="/services" (click)="closeMenu()" class="block text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
       Tjänster
     </a>
-    <a routerLink="/blog" class="block text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
+    <a routerLink="/blog" (click)="closeMenu()" class="block text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
       Blogg
     </a>
-    <a routerLink="/about" class="block text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
+    <a routerLink="/about-page" (click)="closeMenu()" class="block text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
       Om oss
     </a>
-    <a routerLink="/contact-us" class="block text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
+    <a routerLink="/contact" (click)="closeMenu()" class="block text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
       Kontakt
     </a>
     <button
       class="block text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8"
       type="button"
       aria-label="Switch Language"
+      (click)="toggleLanguage()"
     >
-      Switch to English / Switch to Swedish
+      {{ isEnglish ? 'Switch to Swedish' : 'Switch to English' }}
     </button>
   </nav>
 </header>

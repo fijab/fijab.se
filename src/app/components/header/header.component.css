@@ -10,3 +10,7 @@
   nav.md\\:hidden.block {
     display: block;
   }
+
+  .mobile-menu {
+    z-index: 50; 
+  }
