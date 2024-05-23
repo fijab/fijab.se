@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContactFormComponent } from '../../components/contact-form/contact-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ScrollToTopComponent } from '../../components/scroll-to-top/scroll-to-top.component';
 
 @Component({
   selector: 'app-contact-page',
@@ -9,7 +10,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     ContactFormComponent,
     CommonModule,
-    ReactiveFormsModule],
+    ReactiveFormsModule,
+    ScrollToTopComponent],
   templateUrl: './contact-page.component.html',
   styleUrl: './contact-page.component.css'
 })
