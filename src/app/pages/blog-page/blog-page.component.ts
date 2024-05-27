@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ScrollToTopComponent } from '../../components/scroll-to-top/scroll-to-top.component';
+import { BlogListComponent } from '../../components/blog-list/blog-list.component';
+import { RouterModule } from '@angular/router';
 
 interface Blog {
   image: string;
@@ -12,7 +14,7 @@ interface Blog {
 @Component({
   selector: 'app-blog-page',
   standalone: true,
-  imports: [CommonModule, ScrollToTopComponent],
+  imports: [CommonModule, ScrollToTopComponent, BlogListComponent, RouterModule],
   templateUrl: './blog-page.component.html',
   styleUrl: './blog-page.component.css'
 })

@@ -1,0 +1,9 @@
+<div class="container mx-auto p-4">
+    <h2 class="text-2xl font-bold mb-4">Blog List</h2>
+    <ul class="space-y-4">
+      <li *ngFor="let blog of blogs" class="p-4 border border-gray-300 rounded shadow">
+        <a [routerLink]="['/blog', blog.id]" class="text-blue-500 hover:underline">{{ blog.title }}</a>
+        <p class="text-gray-600">{{ blog.author }} - {{ blog.date | date }}</p>
+      </li>
+    </ul>
+</div>

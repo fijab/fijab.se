@@ -1,0 +1,17 @@
+<!-- admin-panel.component.html -->
+<div class="container mx-auto p-4">
+    <h1 class="text-2xl font-bold mb-4">Admin Panel</h1>
+    <button class="bg-pastel-green text-white px-4 py-2 rounded mb-4" (click)="createNewBlog()">Create New Blog</button>
+    <ul class="space-y-2">
+      <li *ngFor="let blog of blogs" class="p-4 border border-gray-300 rounded shadow">
+        <div class="flex justify-between items-center">
+          <span>{{ blog.title }}</span>
+          <div class="space-x-2">
+            <button class="bg-green-500 text-white px-2 py-1 rounded" (click)="editBlog(blog)">Edit</button>
+            <button class="bg-red-500 text-white px-2 py-1 rounded" (click)="deleteBlog(blog.id)">Delete</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
