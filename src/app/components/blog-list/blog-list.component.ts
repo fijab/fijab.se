@@ -9,7 +9,7 @@ import { BlogPost } from '../../models/blog-post.model';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './blog-list.component.html',
-  styleUrl: './blog-list.component.css'
+  styleUrls: ['./blog-list.component.css'] 
 })
 export class BlogListComponent {
   blogs: BlogPost[];
@@ -19,5 +19,4 @@ export class BlogListComponent {
   constructor() {
     this.blogs = this.blogService.getBlogs();
   }
-
 }

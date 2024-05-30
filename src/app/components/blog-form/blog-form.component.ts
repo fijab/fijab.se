@@ -10,7 +10,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './blog-form.component.html',
-  styleUrl: './blog-form.component.css'
+  styleUrls: ['./blog-form.component.css']
 })
 export class BlogFormComponent {
   blog: BlogPost = {
@@ -18,8 +18,12 @@ export class BlogFormComponent {
     title: '',
     content: '',
     author: '',
-    date: new Date()
+    date: new Date(),
+    image: '',
+    category: '' 
   };
+
+  categories = ['Marknadsföring', 'SEO', 'UX/UI design', 'Webbutveckling'];
 
   private blogService = inject(BlogService);
   private router = inject(Router);
@@ -36,6 +40,18 @@ export class BlogFormComponent {
     });
   }
 
+  onFileChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length) {
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.blog.image = reader.result as string;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
   onSubmit() {
     if (this.blog.id) {
       this.blogService.updateBlog(this.blog);
@@ -46,3 +62,4 @@ export class BlogFormComponent {
     this.router.navigate(['/admin']);
   }
 }
+

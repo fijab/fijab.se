@@ -1,32 +1,48 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ScrollToTopComponent } from '../../components/scroll-to-top/scroll-to-top.component';
+import { BlogService } from '../../services/blog.service';
+import { BlogPost } from '../../models/blog-post.model';
 import { BlogListComponent } from '../../components/blog-list/blog-list.component';
 import { RouterModule } from '@angular/router';
-
-interface Blog {
-  image: string;
-  title: string;
-  description: string;
-  category: string;
-}
 
 @Component({
   selector: 'app-blog-page',
   standalone: true,
   imports: [CommonModule, ScrollToTopComponent, BlogListComponent, RouterModule],
   templateUrl: './blog-page.component.html',
-  styleUrl: './blog-page.component.css'
+  styleUrls: ['./blog-page.component.css']
 })
+export class BlogPageComponent implements OnInit {
+  blogs: BlogPost[] = [];
+  categories: string[] = [];
+  filteredBlogs: BlogPost[] = [];
+  featuredBlog?: BlogPost;
 
-export class BlogPageComponent {
-  blogs: Blog[] = [
-    {
-      image: 'assets/images/blog1.jpg',
-      title: 'Blog Article 1',
-      description: 'This is a short description of blog article 1.',
-      category: 'Kategori 1'
-    },
+  private blogService = inject(BlogService);
 
-  ];
+  ngOnInit() {
+    this.blogs = this.blogService.getBlogs();
+    this.filteredBlogs = this.blogs;
+    this.extractCategories();
+    this.featuredBlog = this.blogService.getFeaturedBlog();
+  }
+
+  private extractCategories() {
+    const categoriesSet = new Set<string>();
+    this.blogs.forEach(blog => {
+      if (blog.category) {
+        categoriesSet.add(blog.category);
+      }
+    });
+    this.categories = Array.from(categoriesSet);
+  }
+
+  filterByCategory(category: string) {
+    if (category) {
+      this.filteredBlogs = this.blogs.filter(blog => blog.category === category);
+    } else {
+      this.filteredBlogs = this.blogs;
+    }
+  }
 }

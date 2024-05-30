@@ -33,6 +33,11 @@ export class AdminPanelComponent {
     this.blogService.deleteBlog(id);
     this.blogs = this.blogService.getBlogs();
   }
+
+  setFeaturedBlog(id: number) {
+    this.blogService.setFeaturedBlog(id);
+    this.blogs = this.blogService.getBlogs(); 
+  }
 }
 
 
