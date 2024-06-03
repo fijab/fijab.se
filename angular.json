@@ -12,7 +12,10 @@
       "i18n": {  
         "sourceLocale": "sv",
         "locales": {
-          "en": "src/locale/messages.en.xlf"
+          "en": {
+            "translation": "src/locale/messages.en.xlf",
+            "baseHref": "en"
+          }
         }
       },
       "architect": {
