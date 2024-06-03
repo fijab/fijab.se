@@ -7,6 +7,8 @@ import { BlogPageComponent } from './pages/blog-page/blog-page.component';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import { BlogDetailComponent } from './components/blog-detail/blog-detail.component';
 import { BlogFormComponent } from './components/blog-form/blog-form.component';
+import { LoginComponent } from './components/login/login.component';
+import { authGuard } from './guards/auth.guard';
 
 
 export const routes: Routes = [
@@ -16,7 +18,8 @@ export const routes: Routes = [
     { path: 'services', component: ServicesPageComponent },
     { path: 'blog', component: BlogPageComponent },
     { path: 'blog/:id', component: BlogDetailComponent },
-    { path: 'admin', component: AdminPanelComponent },
-    { path: 'admin/new', component: BlogFormComponent },
-    { path: 'admin/edit/:id', component: BlogFormComponent },
+    { path: 'admin', component: AdminPanelComponent, canActivate: [authGuard] },
+    { path: 'admin/new', component: BlogFormComponent, canActivate: [authGuard] },
+    { path: 'admin/edit/:id', component: BlogFormComponent, canActivate: [authGuard] },
+    { path: 'login', component: LoginComponent }
 ];
