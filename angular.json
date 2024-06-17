@@ -14,7 +14,7 @@
         "locales": {
           "en": {
             "translation": "src/locale/messages.en.xlf",
-            "baseHref": "en"
+            "baseHref": ""
           }
         }
       },
@@ -73,7 +73,7 @@
             },
             "sv": {
               "localize": ["sv"],
-              "outputPath": "dist/fijab-web/sv/"
+              "outputPath": "dist/fijab-web/"
             }
           },
           "defaultConfiguration": "production"
