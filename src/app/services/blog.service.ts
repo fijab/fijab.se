@@ -13,9 +13,11 @@ export class BlogService {
       this.blogs.push({
         id: 1,
         title: 'Sample Blog Post',
+        link: 'blog/sample-category/sample-blog-post',
         content: 'This is a sample blog post content.',
         author: 'Author Name',
-        date: new Date()
+        date: new Date(),
+        category: 'Sample Category'
       });
       this.saveToLocalStorage();
     }
@@ -30,15 +32,36 @@ export class BlogService {
     localStorage.setItem(this.storageKey, JSON.stringify(this.blogs));
   }
 
+  slugify(text: string): string {
+    const map: { [key: string]: string } = {
+      'å': 'a', 'ä': 'a', 'ö': 'o',
+      'Å': 'A', 'Ä': 'A', 'Ö': 'O',
+    };
+    return text
+      .toLowerCase()
+      .replace(/[\s\W-]+/g, '-') // Replace spaces and non-word characters with dashes
+      .replace(/[åäöÅÄÖéÉ]/g, (char) => map[char] || '') // Replace special characters using the map
+      .replace(/[^a-z0-9-]/g, '') // Remove any remaining invalid characters
+      .replace(/-+/g, '-') // Replace multiple dashes with a single dash
+      .replace(/^-+|-+$/g, ''); // Remove leading and trailing dashes
+  }
+
+  generateLink(title: string, category: string): string {
+    const titleSlug = this.slugify(title);
+    const categorySlug = this.slugify(category);
+    return `blog/${categorySlug}/${titleSlug}`;
+  }
+
   getBlogs(): BlogPost[] {
     return this.blogs;
   }
 
-  getBlog(id: number): BlogPost | undefined {
-    return this.blogs.find(blog => blog.id === id);
+  getBlog(link: string): BlogPost | undefined {
+    return this.blogs.find(blog => blog.link === link);
   }
 
   addBlog(blog: BlogPost): void {
+    blog.link = this.generateLink(blog.title, blog.category ?? '');
     this.blogs.push(blog);
     this.saveToLocalStorage();
   }
@@ -46,6 +69,7 @@ export class BlogService {
   updateBlog(updatedBlog: BlogPost): void {
     const index = this.blogs.findIndex(blog => blog.id === updatedBlog.id);
     if (index !== -1) {
+      updatedBlog.link = this.generateLink(updatedBlog.title, updatedBlog.category ?? '');
       this.blogs[index] = updatedBlog;
       this.saveToLocalStorage();
     }
@@ -67,3 +91,8 @@ export class BlogService {
     return this.blogs.find(blog => blog.featured);
   }
 }
+
+
+
+
+

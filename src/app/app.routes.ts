@@ -11,17 +11,19 @@ import { LoginComponent } from './components/login/login.component';
 import { authGuard } from './guards/auth.guard';
 import { CookiesComponent } from './pages/cookies/cookies.component';
 
-
 export const routes: Routes = [
-  { path: '', component: MainPageComponent, pathMatch: 'full' },
+  { path: '', redirectTo: 'sv', pathMatch: 'full' },
+  { path: 'sv', component: MainPageComponent },
   { path: 'about-page', component: AboutPageComponent },
   { path: 'contact', component: ContactPageComponent },
   { path: 'services', component: ServicesPageComponent },
   { path: 'blog', component: BlogPageComponent },
-  { path: 'blog/:id', component: BlogDetailComponent },
+  { path: 'blog/:category/:title', component: BlogDetailComponent },
   { path: 'admin', component: AdminPanelComponent, canActivate: [authGuard] },
-  { path: 'admin/new', component: BlogFormComponent, canActivate: [authGuard] },
-  { path: 'admin/edit/:id', component: BlogFormComponent, canActivate: [authGuard] },
+  { path: 'admin/new', component: BlogFormComponent },
+  { path: 'admin/edit/:link', component: BlogFormComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'cookies', component: CookiesComponent}
+  { path: 'cookies', component: CookiesComponent }
+
 ];
+

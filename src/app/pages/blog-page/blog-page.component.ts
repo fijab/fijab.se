@@ -45,4 +45,10 @@ export class BlogPageComponent implements OnInit {
       this.filteredBlogs = this.blogs;
     }
   }
+
+  generateLink(blog: BlogPost): string[] {
+    const categorySlug = (blog.category ?? '').toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+    const titleSlug = blog.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+    return ['/blog', categorySlug, titleSlug];
+  }
 }

@@ -26,7 +26,7 @@ export class AdminPanelComponent {
   }
 
   editBlog(blog: BlogPost) {
-    this.router.navigate(['/admin/edit', blog.id]);
+    this.router.navigate(['/admin/edit', blog.link]);
   }
 
   deleteBlog(id: number) {
