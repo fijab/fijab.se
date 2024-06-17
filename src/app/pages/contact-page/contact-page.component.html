@@ -7,27 +7,27 @@
 
 <!-- Contact Information and Form -->
 <div class="container mx-auto px-4 py-12 space-y-8">
-<h2 i18n="@@contact-info-title" class="text-2xl font-josefin font-bold text-dark-green mt-8 text-center">Hur kan vi hjälpa dig?</h2>
-<app-contact-form></app-contact-form>
+  <h2 i18n="@@contact-info-title" class="text-2xl font-josefin font-bold text-dark-green mt-8 text-center">Hur kan vi hjälpa dig?</h2>
+  <app-contact-form></app-contact-form>
 </div>
 
 <div class="container mx-auto px-4 py-16">
   <div class="text-center mb-12">
     <h2 i18n="@@location-title" class="text-3xl text-dark-green font-josefin font-bold mb-4">Här finns vi</h2>
   </div>
-  <div class="flex justify-center space-x-8">
+  <div class="flex flex-col md:flex-row justify-center space-y-8 md:space-y-0 md:space-x-8">
     <div class="flex-1 text-center p-6 rounded-lg">
-      <img src="assets/icons/phone.png" alt="Email Icon" class="inline-block h-7 mb-2">
+      <img src="assets/icons/phone.png" alt="Phone Icon" class="inline-block h-7 mb-2">
       <h3 i18n="@@phone-title" class="text-xl font-josefin font-bold text-pastel-green mb-2">Telefon</h3>
       <p class="font-poppins text-gray-600">0123-456789</p>
     </div>
-    <div class="border-l border-gray-400 h-40 mx-4"></div>
+    <div class="border-l border-gray-400 h-40 mx-4 hidden md:block"></div>
     <div class="flex-1 text-center p-6 rounded-lg">
-      <img src="assets/icons/address.png" alt="Email Icon" class="inline-block h-7 mb-2">
+      <img src="assets/icons/address.png" alt="Address Icon" class="inline-block h-7 mb-2">
       <h3 i18n="@@address-title" class="text-xl font-josefin font-bold text-pastel-green mb-2">Adress</h3>
       <p class="font-poppins text-gray-600">Olle-jänsvägen 6, Fåker</p>
     </div>
-    <div class="border-l border-gray-400 h-40 mx-4"></div>
+    <div class="border-l border-gray-400 h-40 mx-4 hidden md:block"></div>
     <div class="flex-1 text-center p-6 rounded-lg">
       <img src="assets/icons/email.png" alt="Email Icon" class="inline-block h-7 mb-2">
       <h3 i18n="@@email-title" class="text-xl font-josefin font-bold text-pastel-green mb-2">E-post</h3>
@@ -38,16 +38,17 @@
 
 <!-- Google Map -->
 <div class="container mx-auto px-4 py-8">
-<div class="relative" style="padding-top: 56.25%;">
-  <iframe
-    class="absolute top-0 left-0 w-full h-full border-0"
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1812.1902001726833!2d14.576188611968924!3d62.98629011303072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x466fa4e399e9087b%3A0x1aef4befc4e69bfe!2zT2xsZS1qw6Ruc3bDpGdlbiA2LCA4NDUgOTMgRsOla2Vy!5e0!3m2!1ssv!2sse!4v1713443474571!5m2!1ssv!2sse"
-    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-  ></iframe>
-</div>
+  <div class="relative" style="padding-top: 56.25%;">
+    <iframe
+      class="absolute top-0 left-0 w-full h-full border-0"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1812.1902001726833!2d14.576188611968924!3d62.98629011303072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x466fa4e399e9087b%3A0x1aef4befc4e69bfe!2zT2xsZS1qw6Ruc3bDpGdlbiA2LCA4NDUgOTMgRsOla2Vy!5e0!3m2!1ssv!2sse!4v1713443474571!5m2!1ssv!2sse"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </div>
 </div>
 
 <app-scroll-to-top></app-scroll-to-top>
+
 
   
   

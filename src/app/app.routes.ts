@@ -9,36 +9,19 @@ import { BlogDetailComponent } from './components/blog-detail/blog-detail.compon
 import { BlogFormComponent } from './components/blog-form/blog-form.component';
 import { LoginComponent } from './components/login/login.component';
 import { authGuard } from './guards/auth.guard';
+import { CookiesComponent } from './pages/cookies/cookies.component';
 
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'sv', pathMatch: 'full' },
-    {
-      path: 'sv', children: [
-        { path: '', component: MainPageComponent },
-        { path: 'about-page', component: AboutPageComponent },
-        { path: 'contact', component: ContactPageComponent },
-        { path: 'services', component: ServicesPageComponent },
-        { path: 'blog', component: BlogPageComponent },
-        { path: 'blog/:id', component: BlogDetailComponent },
-        { path: 'admin', component: AdminPanelComponent, canActivate: [authGuard] },
-        { path: 'admin/new', component: BlogFormComponent },
-        { path: 'admin/edit/:id', component: BlogFormComponent },
-        { path: 'login', component: LoginComponent }
-      ]
-    },
-    {
-      path: 'en', children: [
-        { path: '', component: MainPageComponent },
-        { path: 'about-page', component: AboutPageComponent },
-        { path: 'contact', component: ContactPageComponent },
-        { path: 'services', component: ServicesPageComponent },
-        { path: 'blog', component: BlogPageComponent },
-        { path: 'blog/:id', component: BlogDetailComponent },
-        { path: 'admin', component: AdminPanelComponent, canActivate: [authGuard] },
-        { path: 'admin/new', component: BlogFormComponent },
-        { path: 'admin/edit/:id', component: BlogFormComponent },
-        { path: 'login', component: LoginComponent }
-      ]
-    }
-  ];
+  { path: '', component: MainPageComponent, pathMatch: 'full' },
+  { path: 'about-page', component: AboutPageComponent },
+  { path: 'contact', component: ContactPageComponent },
+  { path: 'services', component: ServicesPageComponent },
+  { path: 'blog', component: BlogPageComponent },
+  { path: 'blog/:id', component: BlogDetailComponent },
+  { path: 'admin', component: AdminPanelComponent, canActivate: [authGuard] },
+  { path: 'admin/new', component: BlogFormComponent, canActivate: [authGuard] },
+  { path: 'admin/edit/:id', component: BlogFormComponent, canActivate: [authGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'cookies', component: CookiesComponent}
+];
