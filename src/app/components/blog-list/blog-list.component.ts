@@ -36,8 +36,8 @@ export class BlogListComponent {
     };
     return text
       .toLowerCase()
+      .replace(/[åäöÅÄÖ]/g, (char) => map[char] || '') // Replace special characters using the map
       .replace(/[\s\W-]+/g, '-') // Replace spaces and non-word characters with dashes
-      .replace(/[åäöÅÄÖéÉ]/g, (char) => map[char] || '') // Replace special characters using the map
       .replace(/[^a-z0-9-]/g, '') // Remove any remaining invalid characters
       .replace(/-+/g, '-') // Replace multiple dashes with a single dash
       .replace(/^-+|-+$/g, ''); // Remove leading and trailing dashes
