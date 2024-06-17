@@ -12,10 +12,6 @@
       "i18n": {  
         "sourceLocale": "sv",
         "locales": {
-          "sv": {
-            "translation": "src/locale/messages.sv.xlf",
-            "baseHref": ""
-          },
           "en": {
             "translation": "src/locale/messages.en.xlf",
             "baseHref": "en"
