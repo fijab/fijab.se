@@ -47,6 +47,31 @@
         <note priority="1" from="description">Link to contact page</note>
         <note priority="1" from="meaning">nav link</note>
       </trans-unit>
+      <!-- Contact us page -->
+      <trans-unit id="contact-banner-title" datatype="html">
+        <source>Kontakta oss</source>
+        <target>Contact Us</target>
+      </trans-unit>
+      <trans-unit id="contact-info-title" datatype="html">
+        <source>Hur kan vi hjälpa dig?</source>
+        <target>How can we help you?</target>
+      </trans-unit>
+      <trans-unit id="location-title" datatype="html">
+        <source>Här finns vi</source>
+        <target>Here we are</target>
+      </trans-unit>
+      <trans-unit id="phone-title" datatype="html">
+        <source>Telefon</source>
+        <target>Phone</target>
+      </trans-unit>
+      <trans-unit id="address-title" datatype="html">
+        <source>Adress</source>
+        <target>Address</target>
+      </trans-unit>
+      <trans-unit id="email-title" datatype="html">
+        <source>E-post</source>
+        <target>Email</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

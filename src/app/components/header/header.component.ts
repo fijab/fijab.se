@@ -1,5 +1,5 @@
-import { Component, HostListener } from '@angular/core';
-import { RouterOutlet, RouterModule } from '@angular/router';
+import { Component, HostListener, inject } from '@angular/core';
+import { RouterOutlet, RouterModule, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -7,11 +7,13 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [RouterOutlet, RouterModule, CommonModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
   isMenuOpen = false;
-  isEnglish = true;
+  isEnglish = false; // Set default to Swedish
+
+  private router = inject(Router);
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
@@ -23,6 +25,12 @@ export class HeaderComponent {
 
   toggleLanguage() {
     this.isEnglish = !this.isEnglish;
+    const newLang = this.isEnglish ? 'en' : 'sv';
+    const currentUrl = this.router.url.replace(/\/(sv|en)/, `/${newLang}`);
+    this.router.navigateByUrl(currentUrl)
+      .then(() => {
+        location.reload();
+      });
   }  
 
   @HostListener('document:click', ['$event'])
@@ -36,7 +44,13 @@ export class HeaderComponent {
     }
   }
 
+  ngOnInit() {
+    const currentLang = this.router.url.includes('en') ? 'en' : 'sv';
+    this.isEnglish = currentLang === 'en';
+  }
 }
+
+
 
 
 

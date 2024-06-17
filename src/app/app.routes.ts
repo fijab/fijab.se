@@ -12,14 +12,33 @@ import { authGuard } from './guards/auth.guard';
 
 
 export const routes: Routes = [
-    { path: '', component: MainPageComponent, pathMatch: 'full' },
-    { path: 'about-page', component: AboutPageComponent },
-    { path: 'contact', component: ContactPageComponent },
-    { path: 'services', component: ServicesPageComponent },
-    { path: 'blog', component: BlogPageComponent },
-    { path: 'blog/:id', component: BlogDetailComponent },
-    { path: 'admin', component: AdminPanelComponent, canActivate: [authGuard] },
-    { path: 'admin/new', component: BlogFormComponent, canActivate: [authGuard] },
-    { path: 'admin/edit/:id', component: BlogFormComponent, canActivate: [authGuard] },
-    { path: 'login', component: LoginComponent }
-];
+    { path: '', redirectTo: 'sv', pathMatch: 'full' },
+    {
+      path: 'sv', children: [
+        { path: '', component: MainPageComponent },
+        { path: 'about-page', component: AboutPageComponent },
+        { path: 'contact', component: ContactPageComponent },
+        { path: 'services', component: ServicesPageComponent },
+        { path: 'blog', component: BlogPageComponent },
+        { path: 'blog/:id', component: BlogDetailComponent },
+        { path: 'admin', component: AdminPanelComponent, canActivate: [authGuard] },
+        { path: 'admin/new', component: BlogFormComponent },
+        { path: 'admin/edit/:id', component: BlogFormComponent },
+        { path: 'login', component: LoginComponent }
+      ]
+    },
+    {
+      path: 'en', children: [
+        { path: '', component: MainPageComponent },
+        { path: 'about-page', component: AboutPageComponent },
+        { path: 'contact', component: ContactPageComponent },
+        { path: 'services', component: ServicesPageComponent },
+        { path: 'blog', component: BlogPageComponent },
+        { path: 'blog/:id', component: BlogDetailComponent },
+        { path: 'admin', component: AdminPanelComponent, canActivate: [authGuard] },
+        { path: 'admin/new', component: BlogFormComponent },
+        { path: 'admin/edit/:id', component: BlogFormComponent },
+        { path: 'login', component: LoginComponent }
+      ]
+    }
+  ];
