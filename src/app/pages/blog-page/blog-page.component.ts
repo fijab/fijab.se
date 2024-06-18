@@ -60,6 +60,13 @@ export class BlogPageComponent implements OnInit {
       .replace(/^-+|-+$/g, ''); // Remove leading and trailing dashes
   }
 
+  getPreview(content: string, length: number): string {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = content;
+    const text = tempDiv.textContent || tempDiv.innerText || '';
+    return text.length > length ? text.substring(0, length) + '...' : text;
+  }
+
   generateLink(blog: BlogPost): string[] {
     const categorySlug = this.slugify(blog.category ?? '');
     const titleSlug = this.slugify(blog.title);
