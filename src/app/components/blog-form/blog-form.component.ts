@@ -52,7 +52,7 @@ export class BlogFormComponent implements AfterViewInit, OnDestroy {
       placeholder: 'Compose an epic...',
       modules: {
         toolbar: [
-          [{ 'header': [1, 2, false] }],
+          [{ 'header': [1, 2, 3, false] }],
           ['bold', 'italic', 'underline'],
           ['image', 'code-block'],
           [{ 'list': 'ordered' }, { 'list': 'bullet' }],
