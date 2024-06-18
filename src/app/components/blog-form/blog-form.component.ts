@@ -5,6 +5,7 @@ import { BlogService } from '../../services/blog.service';
 import { BlogPost } from '../../models/blog-post.model';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import Quill from 'quill';
+import { SlugifyService } from '../../services/slugify.service';
 
 @Component({
   selector: 'app-blog-form',
@@ -29,6 +30,7 @@ export class BlogFormComponent implements AfterViewInit, OnDestroy {
   quill: Quill | undefined;
 
   private blogService = inject(BlogService);
+  private slugifyService = inject(SlugifyService);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
 
@@ -82,18 +84,12 @@ export class BlogFormComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  generateLink(title: string, category: string): string {
-    const titleSlug = this.blogService.slugify(title);
-    const categorySlug = this.blogService.slugify(category);
-    return `blog/${categorySlug}/${titleSlug}`;
-  }
-
   onSubmit() {
     if (this.quill) {
       this.blog.content = this.quill.root.innerHTML;
     }
 
-    this.blog.link = this.generateLink(this.blog.title, this.blog.category ?? '');
+    this.blog.link = this.slugifyService.slugify(`${this.blog.category}/${this.blog.title}`);
 
     if (this.blog.id) {
       this.blogService.updateBlog(this.blog);

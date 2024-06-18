@@ -5,6 +5,7 @@ import { BlogService } from '../../services/blog.service';
 import { BlogPost } from '../../models/blog-post.model';
 import { BlogListComponent } from '../../components/blog-list/blog-list.component';
 import { RouterModule } from '@angular/router';
+import { SlugifyService } from '../../services/slugify.service';
 
 @Component({
   selector: 'app-blog-page',
@@ -20,6 +21,7 @@ export class BlogPageComponent implements OnInit {
   featuredBlog?: BlogPost;
 
   private blogService = inject(BlogService);
+  private slugifyService = inject(SlugifyService);
 
   ngOnInit() {
     this.blogs = this.blogService.getBlogs();
@@ -46,19 +48,6 @@ export class BlogPageComponent implements OnInit {
     }
   }
 
-  slugify(text: string): string {
-    const map: { [key: string]: string } = {
-      'å': 'a', 'ä': 'a', 'ö': 'o',
-      'Å': 'A', 'Ä': 'A', 'Ö': 'O',
-    };
-    return text
-      .toLowerCase()
-      .replace(/[åäöÅÄÖ]/g, (char) => map[char] || '') // Replace special characters using the map
-      .replace(/[\s\W-]+/g, '-') // Replace spaces and non-word characters with dashes
-      .replace(/[^a-z0-9-]/g, '') // Remove any remaining invalid characters
-      .replace(/-+/g, '-') // Replace multiple dashes with a single dash
-      .replace(/^-+|-+$/g, ''); // Remove leading and trailing dashes
-  }
 
   getPreview(content: string, length: number): string {
     const tempDiv = document.createElement('div');
@@ -68,8 +57,8 @@ export class BlogPageComponent implements OnInit {
   }
 
   generateLink(blog: BlogPost): string[] {
-    const categorySlug = this.slugify(blog.category ?? '');
-    const titleSlug = this.slugify(blog.title);
+    const categorySlug = this.slugifyService.slugify(blog.category ?? '');
+    const titleSlug = this.slugifyService.slugify(blog.title);
     return ['/blog', categorySlug, titleSlug];
   }
 }

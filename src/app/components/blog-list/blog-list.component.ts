@@ -3,6 +3,7 @@ import { BlogService } from '../../services/blog.service';
 import { BlogPost } from '../../models/blog-post.model';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
+import { SlugifyService } from '../../services/slugify.service';
 
 @Component({
   selector: 'app-blog-list',
@@ -15,7 +16,9 @@ export class BlogListComponent {
   blogs: BlogPost[];
 
   private blogService = inject(BlogService);
+  private slugifyService = inject(SlugifyService);
   private router = inject(Router);
+  
 
   constructor() {
     this.blogs = this.blogService.getBlogs();
@@ -28,23 +31,11 @@ export class BlogListComponent {
     const text = tempDiv.textContent || tempDiv.innerText || '';
     return text.length > length ? text.substring(0, length) + '...' : text;
   }
-
-  slugify(text: string): string {
-    const map: { [key: string]: string } = {
-      'å': 'a', 'ä': 'a', 'ö': 'o',
-      'Å': 'A', 'Ä': 'A', 'Ö': 'O',
-    };
-    return text
-      .toLowerCase()
-      .replace(/[åäöÅÄÖ]/g, (char) => map[char] || '') // Replace special characters using the map
-      .replace(/[\s\W-]+/g, '-') // Replace spaces and non-word characters with dashes
-      .replace(/[^a-z0-9-]/g, '') // Remove any remaining invalid characters
-      .replace(/-+/g, '-') // Replace multiple dashes with a single dash
-      .replace(/^-+|-+$/g, ''); // Remove leading and trailing dashes
-  }
-
+  
   generateLink(blog: BlogPost): string[] {
-    return this.blogService.generateLink(blog.title, blog.category ?? '').split('/');
+    const categorySlug = this.slugifyService.slugify(blog.category ?? '');
+    const titleSlug = this.slugifyService.slugify(blog.title);
+    return ['/blog', categorySlug, titleSlug];
   }
 }
 
