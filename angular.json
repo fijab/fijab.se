@@ -9,7 +9,7 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
-      "i18n": {  
+      "i18n": {
         "sourceLocale": "en",
         "locales": {
           "sv": {
@@ -92,7 +92,7 @@
               "buildTarget": "fijab-web:build:development"
             },
             "en": {
-              "buildTarget": "fijab-web:build:development,en"
+              "buildTarget": "fijab-web:build:en"
             },
             "sv": {
               "buildTarget": "fijab-web:build:sv"
