@@ -102,6 +102,31 @@
         <source>Vårt orubbliga engagemang för kundens framgång återspeglas i våra konsekvent höga kundnöjdhetsbetyg.</source>
         <target>Our unwavering commitment to client success is reflected in our consistently high customer satisfaction ratings.</target>
       </trans-unit>
+      <!-- Contact us page -->
+      <trans-unit id="contact-banner-title" datatype="html">
+        <source>Kontakta oss</source>
+        <target>Contact us</target>
+      </trans-unit>
+      <trans-unit id="contact-info-title" datatype="html">
+        <source>Hur kan vi hjälpa dig?</source>
+        <target>How can we help you?</target>
+      </trans-unit>
+      <trans-unit id="location-title" datatype="html">
+        <source>Här finns vi</source>
+        <target>Here we are</target>
+      </trans-unit>
+      <trans-unit id="phone-title" datatype="html">
+        <source>Telefon</source>
+        <target>Phone</target>
+      </trans-unit>
+      <trans-unit id="address-title" datatype="html">
+        <source>Adress</source>
+        <target>Address</target>
+      </trans-unit>
+      <trans-unit id="email-title" datatype="html">
+        <source>E-post</source>
+        <target>Email</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -5,6 +5,7 @@ import { BlogService } from '../../services/blog.service';
 import { BlogPost } from '../../models/blog-post.model';
 import { BlogListComponent } from '../../components/blog-list/blog-list.component';
 import { RouterModule } from '@angular/router';
+import { SlugifyService } from '../../services/slugify.service';
 
 @Component({
   selector: 'app-blog-page',
@@ -20,6 +21,7 @@ export class BlogPageComponent implements OnInit {
   featuredBlog?: BlogPost;
 
   private blogService = inject(BlogService);
+  private slugifyService = inject(SlugifyService);
 
   ngOnInit() {
     this.blogs = this.blogService.getBlogs();
@@ -44,5 +46,19 @@ export class BlogPageComponent implements OnInit {
     } else {
       this.filteredBlogs = this.blogs;
     }
+  }
+
+
+  getPreview(content: string, length: number): string {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = content;
+    const text = tempDiv.textContent || tempDiv.innerText || '';
+    return text.length > length ? text.substring(0, length) + '...' : text;
+  }
+
+  generateLink(blog: BlogPost): string[] {
+    const categorySlug = this.slugifyService.slugify(blog.category ?? '');
+    const titleSlug = this.slugifyService.slugify(blog.title);
+    return ['/blog', categorySlug, titleSlug];
   }
 }
