@@ -10,10 +10,10 @@
       "sourceRoot": "src",
       "prefix": "app",
       "i18n": {  
-        "sourceLocale": "sv",
+        "sourceLocale": "en",
         "locales": {
-          "en": {
-            "translation": "src/locale/messages.en.xlf",
+          "sv": {
+            "translation": "src/locale/messages.sv.xlf",
             "baseHref": ""
           }
         }
@@ -73,7 +73,7 @@
             },
             "sv": {
               "localize": ["sv"],
-              "outputPath": "dist/fijab-web/"
+              "outputPath": "dist/fijab-web/sv/"
             }
           },
           "defaultConfiguration": "production"
@@ -130,5 +130,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
