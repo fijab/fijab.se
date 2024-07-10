@@ -1,2 +1,2 @@
-/:path /sv/:path 302
-/:lang/:path /:lang/:path 200
+/:file.js /sv/:file.js 302
+/:lang/:path/:file.js /:lang/:path/:file.js 200
