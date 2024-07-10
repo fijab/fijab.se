@@ -1,2 +1,2 @@
-/ /sv 302
+/:path /sv/:path 302
 /:lang/:path /:lang/:path 200
