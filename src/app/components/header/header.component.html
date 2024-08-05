@@ -32,9 +32,9 @@
     <a routerLink="/services" class="text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
       Tjänster
     </a>
-    <a routerLink="/blog" class="text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
+    <!--<a routerLink="/blog" class="text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
       Blogg
-    </a>
+    </a>-->
     <a routerLink="/about-page" class="text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
       Om oss
     </a>
@@ -73,23 +73,23 @@
     <a routerLink="/services" (click)="closeMenu()" class="block text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
       Tjänster
     </a>
-    <a routerLink="/blog" (click)="closeMenu()" class="block text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
+    <!--<a routerLink="/blog" (click)="closeMenu()" class="block text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
       Blogg
-    </a>
+    </a>-->
     <a routerLink="/about-page" (click)="closeMenu()" class="block text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
       Om oss
     </a>
     <a routerLink="/contact" (click)="closeMenu()" class="block text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
       Kontakt
     </a>
-    <button
+    <!--<button
       class="block text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8"
       type="button"
       aria-label="Switch Language"
       (click)="toggleLanguage()"
     >
       {{ isEnglish ? 'Switch to Swedish' : 'Switch to English' }}
-    </button>
+    </button>-->
     <a [routerLink]="['/login']" style="display: none;">Hidden Login</a>
   </nav>
 </header>
