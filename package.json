@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --localize && cp src/_redirects dist/fijab-web/browser/",
+    "build": "ng build",
+    "build_localize": "ng build --localize && cp src/_redirects dist/fijab-web/browser/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
