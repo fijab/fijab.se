@@ -12,8 +12,7 @@ import { authGuard } from './guards/auth.guard';
 import { CookiesComponent } from './pages/cookies/cookies.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'sv', pathMatch: 'full' },
-  { path: 'sv', component: MainPageComponent },
+  { path: '', component: MainPageComponent },
   { path: 'about-page', component: AboutPageComponent },
   { path: 'contact', component: ContactPageComponent },
   { path: 'services', component: ServicesPageComponent },
