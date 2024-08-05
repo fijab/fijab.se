@@ -9,15 +9,6 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
-      "i18n": {
-        "sourceLocale": "sv",
-        "locales": {
-          "en": {
-            "translation": "src/locale/messages.en.xlf",
-            "baseHref": "en"
-          }
-        }
-      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -67,14 +58,6 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
-            },
-            "en": {
-              "localize": ["en"],
-              "outputPath": "dist/fijab-web/en/"
-            },
-            "sv": {
-              "localize": ["sv"],
-              "outputPath": "dist/fijab-web/sv/"
             }
           },
           "defaultConfiguration": "production"
@@ -90,12 +73,6 @@
             },
             "development": {
               "buildTarget": "fijab-web:build:development"
-            },
-            "en": {
-              "buildTarget": "fijab-web:build:en"
-            },
-            "sv": {
-              "buildTarget": "fijab-web:build:sv"
             }
           },
           "defaultConfiguration": "development"
