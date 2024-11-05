@@ -6,12 +6,12 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-white">
+    <div class="mb-2 font-poppins rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-white">
       <button
         type="button"
         [attr.aria-expanded]="isOpen"
         (click)="toggle()"
-        class="flex w-full items-center justify-between"
+        class="flex w-full items-start justify-between text-left"
       >
         <h3 class="text-lg font-semibold">{{ question }}</h3>
         <svg
@@ -31,7 +31,7 @@ import { CommonModule } from '@angular/common';
         </svg>
       </button>
       <div [hidden]="!isOpen">
-        <p class="mt-4 text-gray-500 dark:text-gray-400">{{ answer }}</p>
+        <p class="font-poppins mt-4 text-gray-500 dark:text-gray-400">{{ answer }}</p>
       </div>
     </div>
   `,
