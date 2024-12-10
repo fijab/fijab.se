@@ -4,12 +4,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { CookieConsentComponent } from './components/cookie-consent/cookie-consent.component';
-import localeSv from '@angular/common/locales/sv';
-import localeEn from '@angular/common/locales/en';
-import { registerLocaleData } from '@angular/common';
-
-registerLocaleData(localeSv);
-registerLocaleData(localeEn);
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -26,6 +21,11 @@ registerLocaleData(localeEn);
 })
 export class AppComponent {
   title = 'fijab-web';
+  constructor(private translate: TranslateService) {
+    const defaultLang = 'en';
+    translate.setDefaultLang(defaultLang);
+    translate.use(defaultLang);
+  }
   
 }
 

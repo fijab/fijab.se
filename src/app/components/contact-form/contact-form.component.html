@@ -1,28 +1,60 @@
 <div class="max-w-md mx-auto mt-10">
   <form class="bg-white px-8 pt-6 pb-8 mb-4 dark:bg-slate-800">
     <div class="mb-4">
-      <label class="hidden dark:block text-white" for="name">Namn <span>*</span></label>
-      <input class="shadow appearance-none border-none w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline placeholder-gray-400 bg-stone-100 dark:bg-slate-400" id="name" type="text" placeholder="Namn">
+      <label class="hidden dark:block text-white" for="name">
+        {{ 'CONTACT_FORM.NAME_LABEL' | translate }} <span>*</span>
+      </label>
+      <input
+        class="shadow appearance-none border-none w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline placeholder-gray-400 bg-stone-100 dark:bg-slate-400"
+        id="name"
+        type="text"
+        placeholder="{{ 'CONTACT_FORM.NAME_PLACEHOLDER' | translate }}"
+      />
     </div>
     <div class="mb-4">
-      <label class="hidden dark:block text-white" for="email">E-post *</label>
-      <input class="shadow appearance-none border-none w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline placeholder-gray-400 bg-stone-100 dark:bg-slate-400" id="email" type="email" placeholder="E-post">
+      <label class="hidden dark:block text-white" for="email">
+        {{ 'CONTACT_FORM.EMAIL_LABEL' | translate }} *
+      </label>
+      <input
+        class="shadow appearance-none border-none w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline placeholder-gray-400 bg-stone-100 dark:bg-slate-400"
+        id="email"
+        type="email"
+        placeholder="{{ 'CONTACT_FORM.EMAIL_PLACEHOLDER' | translate }}"
+      />
     </div>
     <div class="mb-4">
-      <label class="hidden dark:block text-white" for="mobile">Mobil (valfritt)</label>
-      <input class="shadow appearance-none border-none w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline placeholder-gray-400 bg-stone-100 dark:bg-slate-400" id="mobile" type="tel" placeholder="Mobil (valfritt)">
+      <label class="hidden dark:block text-white" for="mobile">
+        {{ 'CONTACT_FORM.MOBILE_LABEL' | translate }}
+      </label>
+      <input
+        class="shadow appearance-none border-none w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline placeholder-gray-400 bg-stone-100 dark:bg-slate-400"
+        id="mobile"
+        type="tel"
+        placeholder="{{ 'CONTACT_FORM.MOBILE_PLACEHOLDER' | translate }}"
+      />
     </div>
     <div class="mb-4">
-      <label class="hidden dark:block text-white" for="message">Meddelande *</label>
-      <textarea class="shadow appearance-none border-none w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline placeholder-gray-400 bg-stone-100 dark:bg-slate-400" id="message" placeholder="Meddelande" rows="5"></textarea>
+      <label class="hidden dark:block text-white" for="message">
+        {{ 'CONTACT_FORM.MESSAGE_LABEL' | translate }} *
+      </label>
+      <textarea
+        class="shadow appearance-none border-none w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline placeholder-gray-400 bg-stone-100 dark:bg-slate-400"
+        id="message"
+        placeholder="{{ 'CONTACT_FORM.MESSAGE_PLACEHOLDER' | translate }}"
+        rows="5"
+      ></textarea>
     </div>
     <div class="flex items-center justify-center">
-      <button class="bg-pastel-green hover:bg-dark-green text-white font-josefin font-bold py-2 px-4 focus:outline-none focus:shadow-outline" type="button">
-        Skicka
+      <button
+        class="bg-pastel-green hover:bg-dark-green text-white font-josefin font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
+        type="button"
+      >
+        {{ 'CONTACT_FORM.SUBMIT_BUTTON' | translate }}
       </button>
     </div>
   </form>
 </div>
+
 
   
 

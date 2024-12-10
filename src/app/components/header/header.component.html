@@ -1,6 +1,6 @@
 <header class="flex items-center justify-between px-6 py-4 md:px-6 lg:px-8 dark:bg-black">
   <a class="flex items-center" routerLink="/">
-    <img src="/assets/images/logo/fijab new logo.png" alt="Webbyrå FIJAB i Östersund logotyp" class="h-12">
+    <img src="/assets/images/logo/webbdesign fijab.png" alt="Webbyrå FIJAB i Östersund logotyp" class="h-12">
     <span class="ml-2 text-lg font-light font-poppins dark:text-gray-100">FIJAB</span>
   </a>
   <button
@@ -27,27 +27,24 @@
   </button>
   <nav class="hidden md:flex items-center space-x-7 font-raleway font-medium">
     <a routerLink="/" class="text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
-      Hem
+      {{ 'HOME' | translate }}
     </a>
     <a routerLink="/services" class="text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
-      Tjänster
+      {{ 'SERVICES' | translate }}
     </a>
-    <!--<a routerLink="/blog" class="text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
-      Blogg
-    </a>-->
     <a routerLink="/about-page" class="text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
-      Om oss
+      {{ 'ABOUT_US' | translate }}
     </a>
     <a routerLink="/contact" class="text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
-      Kontakt
+      {{ 'CONTACT' | translate }}
     </a>
-    <!--<button
+    <button
       class="hidden md:inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 hover:bg-accent hover:text-accent-foreground h-10 w-10"
       type="button"
       aria-label="Language"
       (click)="toggleLanguage()"
     >
-      {{ isEnglish ? 'EN' : 'SV' }}
+      {{ currentLang === 'en' ? 'EN' : 'SV' }}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -64,32 +61,31 @@
         <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
         <path d="M2 12h20"></path>
       </svg>
-    </button>-->
+    </button>
   </nav>
-  <nav [ngClass]="{'block': isMenuOpen, 'hidden': !isMenuOpen}" class="mobile-menu absolute top-0 left-0 right-0 bg-white md:hidden font-raleway mt-4 space-y-4 p-4">
+  <nav
+    [ngClass]="{'block': isMenuOpen, 'hidden': !isMenuOpen}"
+    class="mobile-menu absolute top-0 left-0 right-0 bg-white md:hidden font-raleway mt-4 space-y-4 p-4"
+  >
     <a routerLink="/" (click)="closeMenu()" class="block text-gray-600 dark:text-gray-400 hover:text-stone-400 dark:hover:text-gray-50 underline-offset-8">
-      Hem
+      {{ 'HOME' | translate }}
     </a>
     <a routerLink="/services" (click)="closeMenu()" class="block text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
-      Tjänster
+      {{ 'SERVICES' | translate }}
     </a>
-    <!--<a routerLink="/blog" (click)="closeMenu()" class="block text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
-      Blogg
-    </a>-->
     <a routerLink="/about-page" (click)="closeMenu()" class="block text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
-      Om oss
+      {{ 'ABOUT_US' | translate }}
     </a>
     <a routerLink="/contact" (click)="closeMenu()" class="block text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8">
-      Kontakt
+      {{ 'CONTACT' | translate }}
     </a>
-    <!--<button
+    <button
       class="block text-gray-600 hover:text-stone-400 dark:text-gray-400 dark:hover:text-gray-50 underline-offset-8"
       type="button"
       aria-label="Switch Language"
       (click)="toggleLanguage()"
     >
-      {{ isEnglish ? 'Switch to Swedish' : 'Switch to English' }}
-    </button>-->
-    <a [routerLink]="['/login']" style="display: none;">Hidden Login</a>
+      {{ currentLang === 'en' ? 'Switch to Swedish' : 'Switch to English' }}
+    </button>
   </nav>
 </header>

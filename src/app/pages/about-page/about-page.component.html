@@ -2,38 +2,32 @@
   <video class="absolute inset-0 w-full h-full object-cover opacity-90" autoplay loop muted playsinline>
     <source src="assets/video/dawn.mp4" type="video/mp4">
   </video>
-    <div class="relative z-10 container mx-auto px-4 md:px-6 h-full flex flex-col justify-center items-center text-center text-[#FFFFFF] space-y-6">
-      <h1 class="text-4xl md:text-6xl font-josefin font-semibold tracking-tight">Om FIJAB</h1>
-      <p class="max-w-3xl text-lg md:text-xl">
-        Vi är ett engagerat team som erbjuder ett brett utbud av tjänster i Jämtlands län. Vårt mål är att skapa innovativa lösningar som gör en positiv skillnad i världen
-      </p>
-      <a
-        class="inline-flex items-center justify-center rounded-md bg-[#FFFFFF] text-[#0C0C0C] px-6 py-3 text-base font-medium shadow-sm hover:bg-beige focus:outline-none focus:ring-2 focus:ring-[#FFFFFF] focus:ring-offset-2"
-        href="/services"
-      >
-        Läs mer
-      </a>
-    </div>
+  <div class="relative z-10 container mx-auto px-4 md:px-6 h-full flex flex-col justify-center items-center text-center text-[#FFFFFF] space-y-6">
+    <h1 class="text-4xl md:text-6xl font-josefin font-semibold tracking-tight">{{ 'ABOUT.TITLE' | translate }}</h1>
+    <p class="max-w-3xl text-lg md:text-xl">{{ 'ABOUT.DESCRIPTION' | translate }}</p>
+    <a
+      class="inline-flex items-center justify-center rounded-md bg-[#FFFFFF] text-[#0C0C0C] px-6 py-3 text-base font-medium shadow-sm hover:bg-beige focus:outline-none focus:ring-2 focus:ring-[#FFFFFF] focus:ring-offset-2"
+      href="/services"
+    >
+      {{ 'ABOUT.READ_MORE' | translate }}
+    </a>
+  </div>
 </section>
 
 <section class="py-12 md:py-20 dark:bg-black">
   <div class="container mx-auto px-4 md:px-6">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
       <div>
-        <h2 class="text-3xl text-dark-green text-4xl font-josefin font-bold mb-4 dark:text-pastel-green">Våra värderingar</h2>
-        <p class="font-poppins text-[#6B7280] dark:text-[#9CA3AF] mb-6">
-          Vi strävar ständigt efter att tänka utanför ramarna och hitta nya, kreativa lösningar för våra kunders behov. Vi levererar inte bara högkvalitativa lösningar, utan gör det också på ett sätt som främjar hållbarhet och långsiktighet.
-        </p>
-        <p class="font-poppins text-[#6B7280] dark:text-[#9CA3AF]">
-          Vi tror på öppenhet och tydlig kommunikation, både internt i vårt team och externt med våra kunder. Vi är dedikerade till att erbjuda en exceptionell kundupplevelse och till att utveckla lösningar som inte bara uppfyller, utan överträffar våra kunders förväntningar.
-        </p>
+        <h2 class="text-3xl text-dark-green text-4xl font-josefin font-bold mb-4 dark:text-pastel-green">{{ 'ABOUT.VALUES_TITLE' | translate }}</h2>
+        <p class="font-poppins text-[#6B7280] dark:text-[#9CA3AF] mb-6">{{ 'ABOUT.VALUES_DESC1' | translate }}</p>
+        <p class="font-poppins text-[#6B7280] dark:text-[#9CA3AF]">{{ 'ABOUT.VALUES_DESC2' | translate }}</p>
       </div>
       <div>
         <img
           src="/assets/images/work in progress.jpg"
           width="500"
           height="200"
-          alt="SEO-optimering för företag"
+          alt="{{ 'ABOUT.IMAGE_ALT_SEO' | translate }}"
           class="w-full h-auto"
           style="aspect-ratio: 500 / 400; object-fit: cover;"
         />
@@ -50,19 +44,15 @@
           src="/assets/images/Monique.jpg"
           width="500"
           height="300"
-          alt="redovisning och ekonomi"
+          alt="{{ 'ABOUT.IMAGE_ALT_ACCOUNTING' | translate }}"
           class="w-full h-auto"
           style="aspect-ratio: 500 / 400; object-fit: cover;"
         />
       </div>
       <div>
-        <h2 class="text-3xl text-dark-green text-4xl font-josefin font-bold mb-4 dark:text-pastel-green">Vår historia</h2>
-        <p class="font-poppins text-[#6B7280] dark:text-[#9CA3AF] mb-6">
-          FIJAB grundades i den charmiga byn Fåker, Jämtland, där vi fann inspiration i den omgivande naturens skönhet och lugn. Från början var vårt mål att skapa digitala lösningar som inte bara var funktionella och innovativa, utan som också reflekterade den unika atmosfären i vår hembygd.
-        </p>
-        <p class="font-poppins text-[#6B7280] dark:text-[#9CA3AF]">
-          På FIJAB är vi mer än bara en webbutvecklingsbyrå; vi är en del av en levande gemenskap som värdesätter innovation, hållbarhet och personlig service.
-        </p>
+        <h2 class="text-3xl text-dark-green text-4xl font-josefin font-bold mb-4 dark:text-pastel-green">{{ 'ABOUT.HISTORY_TITLE' | translate }}</h2>
+        <p class="font-poppins text-[#6B7280] dark:text-[#9CA3AF] mb-6">{{ 'ABOUT.HISTORY_DESC1' | translate }}</p>
+        <p class="font-poppins text-[#6B7280] dark:text-[#9CA3AF]">{{ 'ABOUT.HISTORY_DESC2' | translate }}</p>
       </div>
     </div>
   </div>
@@ -72,20 +62,16 @@
   <div class="container mx-auto px-4 md:px-6">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
       <div>
-        <h2 class="text-3xl text-dark-green text-4xl font-josefin font-bold mb-4 dark:text-pastel-green">Så här arbetar vi</h2>
-        <p class="font-poppins text-[#6B7280] dark:text-[#9CA3AF] mb-6">
-          På FIJAB är vårt arbetssätt centrerat kring samarbete, kreativitet och anpassning. Vi börjar varje projekt med en noggrann analys av våra kunders behov och mål. Genom att kombinera innovativa metoder med beprövad erfarenhet utvecklar vi lösningar som är skräddarsydda för att passa just din verksamhet.
-        </p>
-        <p class="font-poppins text-[#6B7280] dark:text-[#9CA3AF]">
-          Vi arbetar nära våra kunder under hela processen – från idé och design till lansering och support. Vår filosofi är enkel: vi lyssnar, skapar och levererar lösningar som inte bara fungerar, utan som också överträffar dina förväntningar.
-        </p>
+        <h2 class="text-3xl text-dark-green text-4xl font-josefin font-bold mb-4 dark:text-pastel-green">{{ 'ABOUT.WORK_TITLE' | translate }}</h2>
+        <p class="font-poppins text-[#6B7280] dark:text-[#9CA3AF] mb-6">{{ 'ABOUT.WORK_DESC1' | translate }}</p>
+        <p class="font-poppins text-[#6B7280] dark:text-[#9CA3AF]">{{ 'ABOUT.WORK_DESC2' | translate }}</p>
       </div>
       <div>
         <img
           src="/assets/images/Ian.jpg"
           width="500"
           height="200"
-          alt="Webbstrategier för småföretag"
+          alt="{{ 'ABOUT.IMAGE_ALT_STRATEGY' | translate }}"
           class="w-full h-auto"
           style="aspect-ratio: 500 / 400; object-fit: cover;"
         />
@@ -93,6 +79,7 @@
     </div>
   </div>
 </section>
+
 
 <!--<section class="py-12 md:py-20 bg-[#F3F4F6] dark:bg-[#1F2937]">
   <div class="container mx-auto px-4 md:px-6">

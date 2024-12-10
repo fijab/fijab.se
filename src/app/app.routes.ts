@@ -22,7 +22,8 @@ export const routes: Routes = [
   { path: 'admin/new', component: BlogFormComponent },
   { path: 'admin/edit/:link', component: BlogFormComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'cookies', component: CookiesComponent }
+  { path: 'cookies', component: CookiesComponent },
+  { path: '**', redirectTo: '' },
 
 ];
 

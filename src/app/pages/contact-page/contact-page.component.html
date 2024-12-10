@@ -1,13 +1,15 @@
 <!-- Contact Banner -->
 <div class="relative bg-cover bg-center h-80" style="background-image: url('assets/images/responsiv-webbdesign-ostersund.jpg');">
   <div class="absolute inset-0 bg-black bg-opacity-10 flex items-center justify-center">
-    <h1 i18n="@@contact-banner-title" class="text-white text-4xl font-josefin font-bold">Kontakta oss</h1>
+    <h1 class="text-white text-4xl font-josefin font-bold">{{ 'CONTACT_PAGE.BANNER_TITLE' | translate }}</h1>
   </div>
 </div>
 
 <!-- Contact Information and Form -->
 <div class="w-full py-6 md:py-12 lg:py-20 dark:bg-black">
-  <h2 i18n="@@contact-info-title" class="text-3xl font-josefin font-bold text-dark-green mt-8 text-center dark:text-pastel-green">Hur kan vi hjälpa dig?</h2>
+  <h2 class="text-3xl font-josefin font-bold text-dark-green mt-8 text-center dark:text-pastel-green">
+    {{ 'CONTACT_PAGE.INFO_TITLE' | translate }}
+  </h2>
   <div class="container mx-auto flex flex-col md:flex-row items-center justify-center mt-8">
     <div class="w-full md:w-1/2 p-4">
       <app-contact-form></app-contact-form>
@@ -21,46 +23,65 @@
 <!-- Additional Information Section -->
 <div class="w-full py-6 md:py-8 lg:py-10 bg-gray-100 dark:bg-gray-800">
   <div class="container mx-auto text-center">
-    <h3 class="text-2xl font-josefin font-bold text-dark-green mb-4 dark:text-pastel-green">Har du en idé?</h3>
+    <h3 class="text-2xl font-josefin font-bold text-dark-green mb-4 dark:text-pastel-green">
+      {{ 'CONTACT_PAGE.ADDITIONAL_INFO_TITLE' | translate }}
+    </h3>
     <p class="text-gray-700 dark:text-gray-300 font-poppins max-w-3xl mx-auto">
-      Vi hjälper dig att förverkliga den! Oavsett om du drömmer om en ny hemsida, vill nå fler kunder med digital marknadsföring 
-      eller behöver expertis inom SEO och design – vi finns här för dig. Kontakta oss idag för en 
-      <strong class="text-dark-green dark:text-pastel-green">kostnadsfri konsultation</strong>, så hittar vi tillsammans en lösning 
-      som passar just dig och din idé!
+      {{ 'CONTACT_PAGE.ADDITIONAL_INFO_DESCRIPTION' | translate }}
     </p>
   </div>
 </div>
 
+<!-- Contact Details Section -->
 <div class="w-full py-6 md:py-12 lg:py-20 dark:bg-gray-900">
   <div class="text-center mb-12">
-    <h2 i18n="@@location-title" class="text-3xl text-dark-green font-josefin font-bold mt-8 mb-4 dark:text-pastel-green">Så hittar du oss</h2>
+    <h2 class="text-3xl text-dark-green font-josefin font-bold mt-8 mb-4 dark:text-pastel-green">
+      {{ 'CONTACT_PAGE.LOCATION_TITLE' | translate }}
+    </h2>
   </div>
   <div class="flex flex-col md:flex-row justify-center space-y-8 md:space-y-0 md:space-x-8">
     <a href="tel:0722230044">
       <div class="flex-1 text-center p-6 rounded-lg">
-        <img src="assets/icons/phone.png" alt="Phone Icon" class="inline-block h-7 mb-2"/>
-        <h3 i18n="@@phone-title" class="text-xl font-josefin font-bold text-pastel-green mb-2">Telefon</h3>
-        <p class="font-poppins text-gray-600 dark:text-gray-100">072-2230044</p>
+        <img src="assets/icons/phone.png" alt="Phone Icon" class="inline-block h-7 mb-2" />
+        <h3 class="text-xl font-josefin font-bold text-pastel-green mb-2">
+          {{ 'CONTACT_PAGE.PHONE_TITLE' | translate }}
+        </h3>
+        <p class="font-poppins text-gray-600 dark:text-gray-100">
+          {{ 'CONTACT_PAGE.PHONE_NUMBER' | translate }}
+        </p>
       </div>
     </a>
     <div class="border-l border-gray-400 h-40 mx-4 hidden md:block"></div>
-    <a target="_blank" href="https://www.google.se/maps/dir//Olle-j%C3%A4nsv%C3%A4gen+6,+845+93+F%C3%A5ker/@62.9862901,14.576194,17z/data=!4m18!1m8!3m7!1s0x466fa4e399e9087b:0x1aef4befc4e69bfe!2zT2xsZS1qw6Ruc3bDpGdlbiA2LCA4NDUgOTMgRsOla2Vy!3b1!8m2!3d62.9862877!4d14.5787689!16s%2Fg%2F11c4rh8rt2!4m8!1m0!1m5!1m1!1s0x466fa4e399e9087b:0x1aef4befc4e69bfe!2m2!1d14.5787689!2d62.9862877!3e4?entry=ttu">
+    <a
+      target="_blank"
+      href="https://www.google.se/maps/dir//Olle-j%C3%A4nsv%C3%A4gen+6,+845+93+F%C3%A5ker/@62.9862901,14.576194,17z/data=!4m18!1m8!3m7!1s0x466fa4e399e9087b:0x1aef4befc4e69bfe!2zT2xsZS1qw6Ruc3bDpGdlbiA2LCA4NDUgOTMgRsOla2Vy!3b1!8m2!3d62.9862877!4d14.5787689!16s%2Fg%2F11c4rh8rt2!4m8!1m0!1m5!1m1!1s0x466fa4e399e9087b:0x1aef4befc4e69bfe!2m2!1d14.5787689!2d62.9862877!3e4?entry=ttu"
+    >
       <div class="flex-1 text-center p-6 rounded-lg">
-        <img src="assets/icons/address.png" alt="Address Icon" class="inline-block h-7 mb-2"/>
-        <h3 i18n="@@address-title" class="text-xl font-josefin font-bold text-pastel-green mb-2">Adress</h3>
-        <p class="font-poppins text-gray-600 dark:text-gray-100">Olle-jänsvägen 6, Fåker</p>
+        <img src="assets/icons/address.png" alt="Address Icon" class="inline-block h-7 mb-2" />
+        <h3 class="text-xl font-josefin font-bold text-pastel-green mb-2">
+          {{ 'CONTACT_PAGE.ADDRESS_TITLE' | translate }}
+        </h3>
+        <p class="font-poppins text-gray-600 dark:text-gray-100">
+          {{ 'CONTACT_PAGE.ADDRESS_DETAIL' | translate }}
+        </p>
       </div>
     </a>
     <div class="border-l border-gray-400 h-40 mx-4 hidden md:block"></div>
     <a href="mailto:info@fijab.se">
       <div class="flex-1 text-center p-6 rounded-lg">
-        <img src="assets/icons/email.png" alt="Email Icon" class="inline-block h-7 mb-2"/>
-        <h3 i18n="@@email-title" class="text-xl font-josefin font-bold text-pastel-green mb-2">E-post</h3>
-        <p class="font-poppins text-gray-600 dark:text-gray-100">info&#64;fijab.com</p>
+        <img src="assets/icons/email.png" alt="Email Icon" class="inline-block h-7 mb-2" />
+        <h3 class="text-xl font-josefin font-bold text-pastel-green mb-2">
+          {{ 'CONTACT_PAGE.EMAIL_TITLE' | translate }}
+        </h3>
+        <p class="font-poppins text-gray-600 dark:text-gray-100">
+          {{ 'CONTACT_PAGE.EMAIL_ADDRESS' | translate }}
+        </p>
       </div>
     </a>
   </div>
 </div>
+
+
 
 <!-- Google Map -->
 <div class="w-full py-6 md:py-12 lg:py-20 dark:bg-gray-900">

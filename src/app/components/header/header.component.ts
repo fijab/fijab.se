@@ -1,19 +1,20 @@
 import { Component, HostListener, inject } from '@angular/core';
-import { RouterOutlet, RouterModule, Router } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterOutlet, RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, TranslateModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
   isMenuOpen = false;
-  isEnglish = false; // Set default to Swedish
+  currentLang = 'sv';
 
-  private router = inject(Router);
+  constructor(private translate: TranslateService) {}
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
@@ -24,29 +25,12 @@ export class HeaderComponent {
   }
 
   toggleLanguage() {
-    this.isEnglish = !this.isEnglish;
-    const newLang = this.isEnglish ? 'en' : 'sv';
-    const currentUrl = this.router.url.replace(/\/(sv|en)/, `/${newLang}`);
-    this.router.navigateByUrl(currentUrl)
-      .then(() => {
-        location.reload();
-      });
-  }  
-
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: MouseEvent) {
-    const target = event.target as HTMLElement;
-    const menuButton = document.querySelector('.menu-button');
-    const mobileMenu = document.querySelector('.mobile-menu');
-
-    if (this.isMenuOpen && !mobileMenu?.contains(target) && !menuButton?.contains(target)) {
-      this.closeMenu();
-    }
+    this.currentLang = this.currentLang === 'en' ? 'sv' : 'en';
+    this.translate.use(this.currentLang); // Update ngx-translate language
   }
 
   ngOnInit() {
-    const currentLang = this.router.url.includes('en') ? 'en' : 'sv';
-    this.isEnglish = currentLang === 'en';
+    this.currentLang = this.translate.currentLang || 'sv'; // Set default language
   }
 }
 
