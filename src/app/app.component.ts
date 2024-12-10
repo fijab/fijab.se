@@ -22,7 +22,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   title = 'fijab-web';
   constructor(private translate: TranslateService) {
-    const defaultLang = 'en';
+    const defaultLang = 'sv';
     translate.setDefaultLang(defaultLang);
     translate.use(defaultLang);
   }

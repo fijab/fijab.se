@@ -25,8 +25,13 @@ export class HeaderComponent {
   }
 
   toggleLanguage() {
-    this.currentLang = this.currentLang === 'en' ? 'sv' : 'en';
-    this.translate.use(this.currentLang); // Update ngx-translate language
+    const newLang = this.currentLang === 'sv' ? 'en' : 'sv';
+    this.translate.use(newLang); 
+    this.currentLang = newLang;
+  }
+
+  get displayLanguage(): string {
+    return this.currentLang === 'sv' ? 'EN' : 'SV';
   }
 
   ngOnInit() {
