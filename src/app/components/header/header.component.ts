@@ -28,6 +28,10 @@ export class HeaderComponent {
     const newLang = this.currentLang === 'sv' ? 'en' : 'sv';
     this.translate.use(newLang); 
     this.currentLang = newLang;
+
+    if (this.isMenuOpen) {
+      this.closeMenu();
+    }
   }
 
   get displayLanguage(): string {
