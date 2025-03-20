@@ -17,7 +17,7 @@ export const routes: Routes = [
   { path: 'contact', component: ContactPageComponent },
   { path: 'services', component: ServicesPageComponent },
   { path: 'blog', component: BlogPageComponent },
-  { path: 'blog/:category/:title', component: BlogDetailComponent },
+  { path: 'blog/:id', component: BlogDetailComponent },
   { path: 'admin', component: AdminPanelComponent, canActivate: [authGuard] },
   { path: 'admin/new', component: BlogFormComponent },
   { path: 'admin/edit/:link', component: BlogFormComponent },

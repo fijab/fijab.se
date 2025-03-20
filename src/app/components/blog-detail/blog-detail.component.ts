@@ -1,8 +1,8 @@
-import { Component, inject, OnInit, AfterViewInit, Renderer2 } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Renderer2, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { BlogService } from '../../services/blog.service';
-import { BlogPost } from '../../models/blog-post.model';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-blog-detail',
@@ -11,81 +11,90 @@ import { BlogPost } from '../../models/blog-post.model';
   templateUrl: './blog-detail.component.html',
   styleUrls: ['./blog-detail.component.css']
 })
+
 export class BlogDetailComponent implements OnInit, AfterViewInit {
-  blog: BlogPost | undefined;
-  sections: { title: string; id: string }[] = [];  // Store sections for TOC
+  blog: any = null;
+  sections: { title: string; id: string }[] = []; // For TOC
   activeSectionId: string | null = null;
+  safeContent: SafeHtml = '';
 
-  private blogService = inject(BlogService);
-  private route = inject(ActivatedRoute);
+  constructor(
+    private route: ActivatedRoute,  // Injecting ActivatedRoute
+    private blogService: BlogService  // Injecting BlogService
+  ) {}
+
+  
   private renderer = inject(Renderer2);
+  private sanitizer = inject(DomSanitizer);
 
-  ngOnInit() {
-    const category = this.route.snapshot.paramMap.get('category')!;
-    const title = this.route.snapshot.paramMap.get('title')!;
-    const link = `blog/${category}/${title}`;
-    this.blog = this.blogService.getBlog(link);
+  ngOnInit(): void {
+    const blogId = this.route.snapshot.paramMap.get('id');  // Fetching id from URL
+    if (blogId) {
+      this.blogService.getBlogById(blogId).subscribe(response => {
+        this.blog = response;
+      });
+    }
+  }
+  
+  
+
+  ngAfterViewInit(): void {
+    // Wait a short while for the content to render
+    setTimeout(() => {
+      this.extractHeadings();
+      this.setupIntersectionObserver();
+    }, 500);
   }
 
-  ngAfterViewInit() {
-    // Extract headings after the content is rendered
-    this.extractHeadings();
-
-    // Setup IntersectionObserver to track section visibility and highlight
-    this.setupIntersectionObserver();
-  }
-
-  // Generate table of contents and assign IDs to each section
-  extractHeadings() {
+  // Extract headings (h2, h3, h4) for the TOC
+  extractHeadings(): void {
     const contentElement = document.querySelector('.blog-content');
     if (contentElement) {
-      const headings = contentElement.querySelectorAll('h2, h3, h4'); // Assuming headings are h2, h3, h4
+      const headings = contentElement.querySelectorAll('h2, h3, h4');
       this.sections = Array.from(headings).map((heading, index) => {
         const id = 'section-' + index;
-        heading.id = id;  // Assign ID for each section
-        return { title: heading.textContent || '', id: id };  // Ensure title is a string
+        heading.id = id;
+        return { title: heading.textContent || '', id: id };
       });
     }
   }
 
-  // Setup IntersectionObserver to highlight the active section
-  setupIntersectionObserver() {
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.5, // Trigger when 50% of the section is visible
-    };
-
+  // Set up an IntersectionObserver to detect active TOC section
+  setupIntersectionObserver(): void {
+    const options = { root: null, rootMargin: '0px', threshold: 0.5 };
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
           this.activeSectionId = entry.target.id;
         }
       });
     }, options);
 
-    // Observe all section headings
-    this.sections.forEach((section) => {
-      const sectionElement = document.getElementById(section.id);
-      if (sectionElement) {
-        observer.observe(sectionElement);
+    this.sections.forEach(section => {
+      const element = document.getElementById(section.id);
+      if (element) {
+        observer.observe(element);
       }
     });
   }
 
-  // Scroll to the specific section when clicking on the TOC
-  scrollToSection(event: Event, sectionId: string) {
-    event.preventDefault();  // Prevent default anchor behavior
-    const sectionElement = document.getElementById(sectionId);
-    if (sectionElement) {
-      sectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Smooth scrolling to a section
+  scrollToSection(event: Event, sectionId: string): void {
+    event.preventDefault();
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 
+  // Format content into paragraphs (splitting on newline)
   formatContent(content: string): string {
     return content.split('\n').map(paragraph => `<p class="paragraph">${paragraph}</p>`).join('');
   }
 }
+
+
+
 
 
 

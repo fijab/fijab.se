@@ -1,4 +1,4 @@
-import { Component, inject, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, inject, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BlogService } from '../../services/blog.service';
@@ -14,7 +14,7 @@ import { SlugifyService } from '../../services/slugify.service';
   templateUrl: './blog-form.component.html',
   styleUrls: ['./blog-form.component.css']
 })
-export class BlogFormComponent implements AfterViewInit, OnDestroy {
+export class BlogFormComponent implements OnInit, AfterViewInit, OnDestroy {
   blog: BlogPost = {
     id: 0,
     title: '',
@@ -22,9 +22,9 @@ export class BlogFormComponent implements AfterViewInit, OnDestroy {
     author: '',
     date: new Date(),
     image: '',
-    category: '',
-    link: ''
+    category: ''
   };
+
 
   categories = ['Marknadsföring', 'SEO', 'UX/UI design', 'Webbutveckling'];
   quill: Quill | undefined;
@@ -35,18 +35,24 @@ export class BlogFormComponent implements AfterViewInit, OnDestroy {
   private route = inject(ActivatedRoute);
 
   constructor() {
+
     this.route.params.subscribe((params: Params) => {
-      const link = params['link'] as string | undefined;
-      if (link) {
-        const blog = this.blogService.getBlog(link);
-        if (blog) {
-          this.blog = { ...blog };
-        }
+      const id = params['id'] as string | undefined;
+      if (id) {
+        this.blogService.getBlogById(id).subscribe((response: any) => {
+          // Assuming response is already mapped to a BlogPost
+          this.blog = response;
+        });
       }
     });
   }
 
-  ngAfterViewInit() {
+  ngOnInit(): void {
+    // (Optional) Additional initialization if needed
+  }
+
+  ngAfterViewInit(): void {
+    // Initialize Quill editor
     this.quill = new Quill('#editor', {
       theme: 'snow',
       placeholder: 'Compose an epic...',
@@ -61,18 +67,18 @@ export class BlogFormComponent implements AfterViewInit, OnDestroy {
       },
     });
 
+    // If editing an existing blog that has content, set it in Quill
     if (this.blog.content) {
       this.quill.root.innerHTML = this.blog.content;
     }
   }
 
-  ngOnDestroy() {
-    if (this.quill) {
-      this.quill = undefined;
-    }
+  ngOnDestroy(): void {
+    // Clean up Quill if needed
+    this.quill = undefined;
   }
 
-  onFileChange(event: Event) {
+  onFileChange(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length) {
       const file = input.files[0];
@@ -84,21 +90,14 @@ export class BlogFormComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  onSubmit() {
+  onSubmit(): void {
+    // Get the updated content from Quill
     if (this.quill) {
       this.blog.content = this.quill.root.innerHTML;
     }
-
-    this.blog.link = this.slugifyService.slugify(`${this.blog.category}/${this.blog.title}`);
-
-    if (this.blog.id) {
-      this.blogService.updateBlog(this.blog);
-    } else {
-      this.blog.id = Date.now();
-      this.blogService.addBlog(this.blog);
-    }
-    this.router.navigate(['/admin']);
   }
+
+    
 }
 
 

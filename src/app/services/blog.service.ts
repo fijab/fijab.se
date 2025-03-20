@@ -1,98 +1,59 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { BlogPost } from '../models/blog-post.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BlogService {
-  private storageKey = 'blogPosts';
-  private blogs: BlogPost[] = this.loadFromLocalStorage();
+  // Strapi endpoint for blog posts
+  private apiUrl = 'http://localhost:1337/api/blog-posts';
 
-  constructor() {
-    if (this.blogs.length === 0) {
-      this.blogs.push({
-        id: 1,
-        title: 'Sample Blog Post',
-        link: 'blog/sample-category/sample-blog-post',
-        content: 'This is a sample blog post content.',
-        author: 'Author Name',
-        date: new Date(),
-        category: 'Sample Category'
-      });
-      this.saveToLocalStorage();
-    }
+  constructor(private http: HttpClient) {}
+
+  /** Fetch all blogs from Strapi and map to BlogPost[] */
+  getBlogs(): Observable<BlogPost[]> {
+    return this.http.get<any>(this.apiUrl).pipe(
+      map(response => response.data.map((item: any) => this.mapStrapiBlog(item)))
+    );
   }
 
-  private loadFromLocalStorage(): BlogPost[] {
-    const data = localStorage.getItem(this.storageKey);
-    return data ? JSON.parse(data) : [];
+  /** Fetch a single blog by id */
+  getBlogById(id: string): Observable<BlogPost> {
+    return this.http.get<any>(`${this.apiUrl}/blog-posts?filters[id][$eq]=${id}&populate=*`).pipe(
+      map(response => {
+        if (response.data.length === 0) {
+          throw new Error('Blog post not found');
+        }
+        const post = response.data[0]; // Extract first matching post
+        return {
+          id: post.id,
+          title: post.attributes.Title,
+          content: post.attributes.Content,
+          author: post.attributes.Author || 'Unknown',
+          date: post.attributes.Date || new Date().toISOString()
+        };
+      })
+    );
   }
+  
+  
+  
 
-  private saveToLocalStorage(): void {
-    localStorage.setItem(this.storageKey, JSON.stringify(this.blogs));
-  }
-
-  slugify(text: string): string {
-    const map: { [key: string]: string } = {
-      'å': 'a', 'ä': 'a', 'ö': 'o',
-      'Å': 'A', 'Ä': 'A', 'Ö': 'O',
+  /** Map a Strapi response item to BlogPost */
+  private mapStrapiBlog(item: any): BlogPost {
+    return {
+      id: item.id,
+      title: item.Title,                     // Use 'Title' (capital T)
+      content: item.Content,                 // Use 'Content'
+      author: item.Author || '',             // Use 'Author' if available; otherwise, default to empty string
+      date: item.Date ? new Date(item.Date) : new Date(), // Use 'Date' (if null, default to new Date)
+      category: item.Category || '',         // Use 'Category'
+      featured: item.featured || false,      // If you have a "featured" flag
+      image: item.image || ''                // Use 'image' if available
     };
-    return text
-      .toLowerCase()
-      .replace(/[åäöÅÄÖ]/g, (char) => map[char] || '') // Replace special characters using the map
-      .replace(/[\s\W-]+/g, '-') // Replace spaces and non-word characters with dashes
-      .replace(/[^a-z0-9-]/g, '') // Remove any remaining invalid characters
-      .replace(/-+/g, '-') // Replace multiple dashes with a single dash
-      .replace(/^-+|-+$/g, ''); // Remove leading and trailing dashes
-  }
-
-  generateLink(title: string, category: string): string {
-    const titleSlug = this.slugify(title);
-    const categorySlug = this.slugify(category);
-    return `blog/${categorySlug}/${titleSlug}`;
-  }
-
-  getBlogs(): BlogPost[] {
-    return this.blogs;
-  }
-
-  getBlog(link: string): BlogPost | undefined {
-    return this.blogs.find(blog => blog.link === link);
-  }
-
-  addBlog(blog: BlogPost): void {
-    blog.link = this.generateLink(blog.title, blog.category ?? '');
-    this.blogs.push(blog);
-    this.saveToLocalStorage();
-  }
-
-  updateBlog(updatedBlog: BlogPost): void {
-    const index = this.blogs.findIndex(blog => blog.id === updatedBlog.id);
-    if (index !== -1) {
-      updatedBlog.link = this.generateLink(updatedBlog.title, updatedBlog.category ?? '');
-      this.blogs[index] = updatedBlog;
-      this.saveToLocalStorage();
-    }
-  }
-
-  deleteBlog(id: number): void {
-    this.blogs = this.blogs.filter(blog => blog.id !== id);
-    this.saveToLocalStorage();
-  }
-
-  setFeaturedBlog(id: number): void {
-    this.blogs.forEach(blog => {
-      blog.featured = blog.id === id;
-    });
-    this.saveToLocalStorage();
-  }
-
-  getFeaturedBlog(): BlogPost | undefined {
-    return this.blogs.find(blog => blog.featured);
   }
 }
-
-
-
-
 

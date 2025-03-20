@@ -1,33 +1,26 @@
-<div class="container mx-auto p-4 flex">
+<div class="container mx-auto p-4" *ngIf="blog">
+  <h1 class="text-3xl font-bold">{{ blog.title }}</h1>
+  <p class="text-gray-600">{{ blog.author }} - {{ blog.date | date }}</p>
 
-    <!-- Blog Content -->
-    <div class="w-2/3 p-4 mr-12"> 
-      <h2 class="text-2xl font-bold mb-4" *ngIf="blog">{{ blog.title || 'Untitled' }}</h2>
-      <p class="text-gray-600 mb-4" *ngIf="blog">{{ blog.author || 'Unknown author' }} - {{ blog.date | date }}</p>
-      <div class="blog-content text-gray-700 font-poppins" [innerHTML]="formatContent(blog?.content || '')"></div>
-    </div>
-  
-    <!-- Sidebar with Table of Contents -->
-    <div class="w-1/4 p-4 sticky top-4 max-h-[90vh] overflow-y-auto ml-12"> 
-      <div *ngIf="blog">
-        <h3 class="text-xl font-raleway font-bold mb-4">Innehåll</h3>
-        <ul class="space-y-4">
-          <!-- Loop through sections and create TOC links -->
-          <li *ngFor="let section of sections">
-            <a
-              href="javascript:void(0);" 
-              class="font-poppins text-gray-500 hover:text-pastel-green"
-              (click)="scrollToSection($event, section.id)"  
-              [class.font-semibold]="section.id === activeSectionId"
-            >
-              {{ section.title }}
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  
+  <!-- Table of Contents -->
+  <div class="bg-gray-100 p-3 rounded mt-4">
+    <h2 class="text-lg font-semibold">Table of Contents</h2>
+    <ul>
+      <li *ngFor="let section of sections">
+        <a href="#" (click)="scrollToSection($event, section.id)"
+           [class.text-blue-500]="activeSectionId === section.id"
+           class="hover:underline">
+          {{ section.title }}
+        </a>
+      </li>
+    </ul>
   </div>
+
+  <!-- Blog Content -->
+  <div class="blog-content mt-6" [innerHTML]="safeContent"></div>
+</div>
+
+
   
   
   

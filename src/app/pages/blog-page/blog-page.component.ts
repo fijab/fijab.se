@@ -24,13 +24,16 @@ export class BlogPageComponent implements OnInit {
   private slugifyService = inject(SlugifyService);
 
   ngOnInit() {
-    this.blogs = this.blogService.getBlogs();
-    this.filteredBlogs = this.blogs;
-    this.extractCategories();
-    this.featuredBlog = this.blogService.getFeaturedBlog();
+    // Subscribe to getBlogs() Observable to fetch blogs from Strapi
+    this.blogService.getBlogs().subscribe((blogs: BlogPost[]) => {
+      this.blogs = blogs;
+      this.filteredBlogs = blogs;
+      this.extractCategories();
+    });
+
   }
 
-  private extractCategories() {
+  private extractCategories(): void {
     const categoriesSet = new Set<string>();
     this.blogs.forEach(blog => {
       if (blog.category) {
@@ -40,14 +43,13 @@ export class BlogPageComponent implements OnInit {
     this.categories = Array.from(categoriesSet);
   }
 
-  filterByCategory(category: string) {
+  filterByCategory(category: string): void {
     if (category) {
       this.filteredBlogs = this.blogs.filter(blog => blog.category === category);
     } else {
       this.filteredBlogs = this.blogs;
     }
   }
-
 
   getPreview(content: string, length: number): string {
     const tempDiv = document.createElement('div');
@@ -57,8 +59,8 @@ export class BlogPageComponent implements OnInit {
   }
 
   generateLink(blog: BlogPost): string[] {
-    const categorySlug = this.slugifyService.slugify(blog.category ?? '');
-    const titleSlug = this.slugifyService.slugify(blog.title);
-    return ['/blog', categorySlug, titleSlug];
+    return ['/blog', blog.id.toString()]; 
   }
+  
 }
+
