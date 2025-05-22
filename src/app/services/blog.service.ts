@@ -9,7 +9,7 @@ import { BlogPost } from '../models/blog-post.model';
 })
 export class BlogService {
   // Strapi endpoint for blog posts
-  private apiUrl = 'http://localhost:1337/api/blog-posts';
+  private apiUrl = 'https://strapi.fijab.se/api/blog-posts';
 
   constructor(private http: HttpClient) {}
 
