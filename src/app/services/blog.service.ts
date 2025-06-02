@@ -9,31 +9,31 @@ import { BlogPost } from '../models/blog-post.model';
 })
 export class BlogService {
   // Strapi endpoint for blog posts
-  private apiUrl = 'https://strapi.fijab.se/api/blog-posts';
+  private apiUrl = 'https://strapi.fijab.se/api';
 
   constructor(private http: HttpClient) {}
 
   /** Fetch all blogs from Strapi and map to BlogPost[] */
   getBlogs(): Observable<BlogPost[]> {
-    return this.http.get<any>(this.apiUrl).pipe(
+    return this.http.get<any>(`${this.apiUrl}/articles`).pipe(
       map(response => response.data.map((item: any) => this.mapStrapiBlog(item)))
     );
   }
 
   /** Fetch a single blog by id */
   getBlogById(id: string): Observable<BlogPost> {
-    return this.http.get<any>(`${this.apiUrl}/blog-posts?filters[id][$eq]=${id}&populate=*`).pipe(
+    return this.http.get<any>(`${this.apiUrl}/articles/${id}?populate=*`).pipe(
       map(response => {
         if (response.data.length === 0) {
           throw new Error('Blog post not found');
         }
-        const post = response.data[0]; // Extract first matching post
+        const post = response.data; // Extract first matching post
         return {
-          id: post.id,
-          title: post.attributes.Title,
-          content: post.attributes.Content,
-          author: post.attributes.Author || 'Unknown',
-          date: post.attributes.Date || new Date().toISOString()
+          id: post.documentId,
+          title: post.title,
+          content: post.description,
+          author: post.author || 'Unknown',
+          date: post.createdAt || new Date().toISOString()
         };
       })
     );
@@ -45,12 +45,12 @@ export class BlogService {
   /** Map a Strapi response item to BlogPost */
   private mapStrapiBlog(item: any): BlogPost {
     return {
-      id: item.id,
-      title: item.Title,                     // Use 'Title' (capital T)
-      content: item.Content,                 // Use 'Content'
-      author: item.Author || '',             // Use 'Author' if available; otherwise, default to empty string
-      date: item.Date ? new Date(item.Date) : new Date(), // Use 'Date' (if null, default to new Date)
-      category: item.Category || '',         // Use 'Category'
+      id: item.documentId,
+      title: item.title,                     // Use 'Title' (capital T)
+      content: item.description,                 // Use 'Content'
+      author: item.author || '',             // Use 'Author' if available; otherwise, default to empty string
+      date: item.createdAt ? new Date(item.createdAt) : new Date(), // Use 'Date' (if null, default to new Date)
+      category: item.category || '',         // Use 'Category'
       featured: item.featured || false,      // If you have a "featured" flag
       image: item.image || ''                // Use 'image' if available
     };
