@@ -32,6 +32,10 @@ export class BlogDetailComponent implements OnInit, AfterViewInit {
     if (blogId) {
       this.blogService.getBlogById(blogId).subscribe(response => {
         this.blog = response;
+        // Process the content for HTML display
+        this.safeContent = this.sanitizer.bypassSecurityTrustHtml(
+          this.formatContent(this.blog.content)
+        );
       });
     }
   }
@@ -87,9 +91,46 @@ export class BlogDetailComponent implements OnInit, AfterViewInit {
     }
   }
 
-  // Format content into paragraphs (splitting on newline)
+  // Format content into HTML with markdown-like styling
   formatContent(content: string): string {
-    return content.split('\n').map(paragraph => `<p class="paragraph">${paragraph}</p>`).join('');
+    if (!content) return '';
+    
+    return content
+      .split('\n')
+      .map(line => {
+        line = line.trim();
+        if (!line) return '<br>';
+        
+        // Handle headers
+        if (line.startsWith('## ')) {
+          return `<h2 class="text-2xl font-bold mt-6 mb-4 text-dark-green">${line.substring(3)}</h2>`;
+        }
+        if (line.startsWith('### ')) {
+          return `<h3 class="text-xl font-semibold mt-4 mb-3 text-dark-green">${line.substring(4)}</h3>`;
+        }
+        
+        // Handle bold text
+        line = line.replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold">$1</strong>');
+        
+        // Handle bullet points
+        if (line.startsWith('- ')) {
+          return `<li class="ml-4 mb-2">${line.substring(2)}</li>`;
+        }
+        
+        // Handle checkmarks
+        if (line.startsWith('✅ ')) {
+          return `<div class="flex items-center mb-2"><span class="text-green-500 mr-2">✅</span>${line.substring(2)}</div>`;
+        }
+        
+        // Handle call-to-action
+        if (line.startsWith('**Call-to-Action:**')) {
+          return `<div class="bg-pastel-green p-4 rounded-lg mt-6 mb-4"><p class="font-bold text-white">${line.replace(/\*\*(.*?)\*\*/g, '$1')}</p></div>`;
+        }
+        
+        // Regular paragraphs
+        return `<p class="mb-4 leading-relaxed">${line}</p>`;
+      })
+      .join('');
   }
 }
 

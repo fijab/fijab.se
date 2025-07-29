@@ -1,0 +1,15 @@
+# Redirects for SPA routing
+/* /index.html 200
+
+# SEO friendly redirects
+/webbdesign /services 301
+/seo /services 301
+/marknadsföring /services 301
+/webbutveckling /services 301
+
+# Blog redirects for Swedish SEO
+/blogg /blog 301
+
+# Force HTTPS and www redirect (handled by Cloudflare)
+http://fijab.se/* https://www.fijab.se/:splat 301
+https://fijab.se/* https://www.fijab.se/:splat 301

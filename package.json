@@ -6,6 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "build_localize": "ng build --localize && cp src/_redirects dist/fijab-web/browser/",
+    "build:cloudflare": "ng build --configuration production && cp src/_redirects dist/fijab-web/browser/",
+    "deploy:cloudflare": "npm run build:cloudflare && wrangler pages publish dist/fijab-web/browser --project-name=fijab-se",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -16,6 +18,7 @@
     "@angular/compiler": "^18.0.0-next.0",
     "@angular/core": "^18.0.0-next.0",
     "@angular/forms": "^18.0.0-next.0",
+    "@angular/localize": "^18.2.13",
     "@angular/platform-browser": "^18.0.0-next.0",
     "@angular/platform-browser-dynamic": "^18.0.0-next.0",
     "@angular/router": "^18.0.0-next.0",

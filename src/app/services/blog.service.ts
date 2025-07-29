@@ -24,16 +24,29 @@ export class BlogService {
   getBlogById(id: string): Observable<BlogPost> {
     return this.http.get<any>(`${this.apiUrl}/articles/${id}?populate=*`).pipe(
       map(response => {
-        if (response.data.length === 0) {
+        if (!response.data) {
           throw new Error('Blog post not found');
         }
-        const post = response.data; // Extract first matching post
+        const post = response.data;
+        
+        // Extract content from blocks array
+        let content = post.description || '';
+        if (post.blocks && post.blocks.length > 0) {
+          content = post.blocks
+            .filter((block: any) => block.__component === 'shared.rich-text')
+            .map((block: any) => block.body || '')
+            .join('\n\n');
+        }
+        
         return {
           id: post.documentId,
           title: post.title,
-          content: post.description,
-          author: post.author || 'Unknown',
-          date: post.createdAt || new Date().toISOString()
+          content: content,
+          author: post.author?.name || 'FIJAB Team',
+          date: new Date(post.createdAt || new Date()),
+          category: post.category || '',
+          featured: post.featured || false,
+          image: post.cover?.url || ''
         };
       })
     );
@@ -44,15 +57,24 @@ export class BlogService {
 
   /** Map a Strapi response item to BlogPost */
   private mapStrapiBlog(item: any): BlogPost {
+    // Extract content from blocks or use description as fallback
+    let content = item.description || '';
+    if (item.blocks && item.blocks.length > 0) {
+      content = item.blocks
+        .filter((block: any) => block.__component === 'shared.rich-text')
+        .map((block: any) => block.body || '')
+        .join('\n\n');
+    }
+    
     return {
       id: item.documentId,
-      title: item.title,                     // Use 'Title' (capital T)
-      content: item.description,                 // Use 'Content'
-      author: item.author || '',             // Use 'Author' if available; otherwise, default to empty string
-      date: item.createdAt ? new Date(item.createdAt) : new Date(), // Use 'Date' (if null, default to new Date)
-      category: item.category || '',         // Use 'Category'
-      featured: item.featured || false,      // If you have a "featured" flag
-      image: item.image || ''                // Use 'image' if available
+      title: item.title,
+      content: content,
+      author: item.author?.name || 'FIJAB Team',
+      date: item.createdAt ? new Date(item.createdAt) : new Date(),
+      category: item.category || '',
+      featured: item.featured || false,
+      image: item.cover?.url || item.image || ''
     };
   }
 }

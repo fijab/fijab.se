@@ -1,0 +1,19 @@
+name = "fijab-website"
+compatibility_date = "2024-01-01"
+
+[env.production]
+name = "fijab-se"
+route = "fijab.se/*"
+
+[build]
+command = "npm run build_localize"
+cwd = "."
+watch_dir = "src"
+
+[[env.production.route]]
+pattern = "fijab.se/*"
+zone_name = "fijab.se"
+
+[[env.production.route]]  
+pattern = "www.fijab.se/*"
+zone_name = "fijab.se"
